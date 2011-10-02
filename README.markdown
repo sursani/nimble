@@ -1,1 +1,6 @@
 Nimble project
+
+You to need to run the following for it to all work:
+npm install express
+npm install ejs
+npm install oauth
