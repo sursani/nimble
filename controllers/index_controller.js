@@ -1,4 +1,6 @@
 var twitter = require('twitter');
+var SiteProvider = require('../providers/site_provider').SiteProvider;
+var SiteProvider = new SiteProvider();
 
 module.exports = {
 
@@ -27,26 +29,37 @@ module.exports = {
 	success: function (req, res) {
 		var user = req.session.user;
 		
-		twitter.getAuthAccessToken(user, req.query.oauth_verifier, function (accessToken, accessTokenSecret) {
-			user.oauthAccessToken = accessToken;
-			user.oauthAccessTokenSecret = accessTokenSecret;
+		twitter.getAuthAccessToken(user, req.query.oauth_verifier, function (access_token, access_token_secret) {
+			user.oauthAccessToken = access_token;
+			user.oauthAccessTokenSecret = access_token_secret;
 			req.session.user = user;
 			
-			//user.sessionId = 1;//req.session.Id;
-			//registration.saveUserAccessToken(user, callbackStream);
-			//res.render('userstream', {
-		    //	title: 'User stream'
-		  	//});
-			res.redirect('/home');
+			SiteProvider.findByName('nba', function(err, site) {
+				// if site does not exist, add and save it
+				if (!site) {
+					SiteProvider.save({
+						name: 'nba',
+						description: 'site for nba players',
+						access_token: access_token,
+						access_token_secret: access_token_secret
+					}, function (err) {
+						if (!err) {
+							console.log('saving the site.');
+						}
+					});
+				}
+				
+				res.redirect('/home');
+			});
 		});
 	},
 	
 	home: function (req, res) {
-		var user = req.session.user;
-		
-		twitter.getHomeTimeline(user, function(tweets) {
-			console.log(tweets);
-			res.end();
+		SiteProvider.findByName('nba', function(err, site) {
+			twitter.getHomeTimeline(site, function(tweets) {
+				console.log(tweets);
+				res.end();
+			});
 		});
 	}
 
