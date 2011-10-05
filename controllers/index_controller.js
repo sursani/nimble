@@ -49,16 +49,7 @@ module.exports = {
 					});
 				}
 				
-				res.redirect('/home');
-			});
-		});
-	},
-	
-	home: function (req, res) {
-		SiteProvider.findByName('nba', function(err, site) {
-			twitter.getHomeTimeline(site, function(tweets) {
-				console.log(tweets);
-				res.end();
+				res.redirect('/');
 			});
 		});
 	}

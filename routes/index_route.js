@@ -5,5 +5,4 @@ module.exports = function(app) {
 	app.get('/about', indexController.about);
 	app.get('/initial', indexController.initial);
 	app.get('/success', indexController.success);
-	app.get('/home', indexController.home);	
 };
