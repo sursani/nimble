@@ -1,26 +1,7 @@
-<a id='clickMe' href='#'>Click Me</a>
+<ul class="tweets">
+	<li>first tweet hardcoded</li>
+</ul>
 
 <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
-<script>
-	var socket = io.connect();
-	
-	socket.on('connect', function() {
-		console.log('connecting to socket.io');
-		socket.emit
-	});
-	
-	socket.on('serverSend2', function(msg) {
-		console.log(msg);
-		console.log('end of serverSend2');
-	});
-	
-	$(function () {
-		$('#clickMe').click(function () {
-			console.log('inside clickMe');
-			socket.emit('serverSend', 'hello there', function() {
-				console.log('received response from server');
-			});
-		});
-	});
-</script>
+<script src="/javascripts/nimble.js"></script>
