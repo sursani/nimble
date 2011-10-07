@@ -13,7 +13,12 @@ function Downloader() {
 }
 sys.inherits(Downloader, events.EventEmitter);
 
-var lastDate = new Date(79,5,24);
+var lastDate = new Date();
+TweetProvider.findLastTweet(function(err, docs) {
+	if (!err && docs.length > 0) {
+		lastDate = new Date(docs[0].created_on);
+	}
+});
 
 Downloader.prototype.download = function(last_tweet) {
     var self = this;
@@ -21,11 +26,11 @@ Downloader.prototype.download = function(last_tweet) {
     setInterval(function() {
 		TweetProvider.findByLastDate(lastDate, function(err, tweets) {
 			if (tweets.length > 0) {
-				lastDate = new Date(tweets[0].created_on);
-				self.emit('finished', sys.inspect(tweets));
+				var lastIndex = tweets.length - 1;
+				lastDate = new Date(tweets[lastIndex].created_on);
+				self.emit('finished', tweets);
 			}
 		});
-        
     }, 5000);
 }
 

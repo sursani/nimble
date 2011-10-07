@@ -1,12 +1,23 @@
 var twitter = require('twitter');
+
 var SiteProvider = require('../providers/site_provider').SiteProvider;
 var SiteProvider = new SiteProvider();
+
+var TweetProvider = require('../providers/tweet_provider').TweetProvider;
+var TweetProvider = new TweetProvider();
 
 module.exports = {
 
 	index: function (req, res) {
-		res.render('index/index', {
-			title: 'Home'
+		TweetProvider.getPagedTweets(1, function(err, docs) {
+			if (!err) {
+				res.render('index/index', {
+					title: 'Home',
+					tweets: docs
+				});
+			} else {
+				res.end();
+			}
 		});
 	},
 

@@ -1,5 +1,8 @@
+<%= title %>
 <ul class="tweets">
-	<li>first tweet hardcoded</li>
+	<% for(var i=0; i<tweets.length; i++) { %>
+		<li><%= tweets[i].user_name %> (<%= tweets[i].full_name %>): <%= tweets[i].text %></li>
+	<% } %>
 </ul>
 
 <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
