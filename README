@@ -5,3 +5,7 @@ npm install express
 npm install ejs
 npm install oauth
 npm install mongoose
+
+Twitter Account:
+username: CarTweetin
+pwd: tweetin123

@@ -4,7 +4,19 @@
 		<li><%= tweets[i].user_name %> (<%= tweets[i].full_name %>): <%= tweets[i].text %></li>
 	<% } %>
 </ul>
+<a id="showMore" href="#">Show More</a>
 
 <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/javascripts/nimble.js"></script>
+<script>
+	var nextPage = 2;
+	$('#showMore').click(function() {
+		$.post('/getmoretweets', { page: nextPage }, function (data) {
+			if (data && data.length > 0) {
+				nextPage = nextPage + 1;
+				showOldTweets(data);
+			}
+		});
+	});
+</script>
