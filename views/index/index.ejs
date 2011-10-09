@@ -1,14 +1,18 @@
 <%= title %>
-<ul class="tweets">
-	<% for(var i=0; i<tweets.length; i++) { %>
-		<li><%= tweets[i].user_name %> (<%= tweets[i].full_name %>): <%= tweets[i].text %></li>
-	<% } %>
-</ul>
-<a id="showMore" href="#">Show More</a>
+<div id="twitterstream">
+	<ul id="tweet-list">
+		<% for(var i=0; i<tweets.length; i++) { %>
+			<li id='tweet-stream'><div id='profile-image'><img src='<%= tweets[i].profile_image_url %>'/></div><div id='tweet-info'><div id='user'><%= tweets[i].user_name %>  
+									<%= tweets[i].full_name %></div><div id='text'><%= tweets[i].text %></div></div></li>
+		<% } %>
+	</ul>
+</div>
 
-<script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+<a id="showMore" href="#">Show More</a>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/javascripts/nimble.js"></script>
+<script src="/javascripts/jquery.vticker.1.4.js"></script>
 <script>
 	var nextPage = 2;
 	$('#showMore').click(function() {
@@ -20,3 +24,4 @@
 		});
 	});
 </script>
+

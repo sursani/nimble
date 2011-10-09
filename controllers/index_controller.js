@@ -13,7 +13,7 @@ module.exports = {
 		TweetProvider.getPagedTweets(1, function(err, docs) {
 			if (!err) {
 				res.render('index/index', {
-					title: 'Home',
+					title: 'Nimble Celebrity Tweets',
 					tweets: docs
 				});
 			} else {

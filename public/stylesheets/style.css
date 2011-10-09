@@ -1,8 +1,38 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
+  padding: 10px;
+  font: 14px "Lucida Sans Unicode", Helvetica, Arial, sans-serif;}
 
 a {
   color: #00B7FF;
+}
+
+.reglabel {
+	width: 500px;
+}
+
+#messageText {
+	margin-right:10px;
+    width:300px;
+    height:200px;
+}
+
+#tweet-stream {
+	height: 70px;	
+}
+
+#profile-image {
+	float: left;
+	height: 50px;
+	width: 50px;
+}
+
+#tweet-info {
+	float: left;
+	padding-left: 10px;
+	width: 500px;
+	font-size: 12px;
+}
+
+#tweet-list {
+	list-style-type: none;
 }
