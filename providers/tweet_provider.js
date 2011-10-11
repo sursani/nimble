@@ -10,6 +10,7 @@ var Tweet = new Schema({
   , profile_image_url 		: String
   , full_name				: String
   , created_on				: Date
+  , tweet_id				: Number
 });
 
 mongoose.model('Tweet', Tweet);
@@ -46,12 +47,13 @@ TweetProvider.prototype.getPagedTweets = function(page, callback) {
 
 // Create a new Tweet
 TweetProvider.prototype.save = function (params, callback) {
-  var tweet = new Site({
+  var tweet = new Tweet({
 						user_name: params['user_name'],
 						text: params['text'],
 						profile_image_url: params['profile_image_url'],
 						full_name: params['full_name'],
-						created_on: new Date()
+						created_on: params['created_on'],
+						tweet_id: params['tweet_id']
 					});
   tweet.save(function (err) {
 	callback();

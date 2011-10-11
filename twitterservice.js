@@ -15,6 +15,7 @@ var daemonProcess = function(){
 		});
 	}); 
 	
+	/*
 	twitter.getFriendsIds(access_token, access_token_secret, screen_name, function(err, data){
 		if (!err){
 			for (var i=0; i<=data.length-1; i++){
@@ -33,6 +34,7 @@ var daemonProcess = function(){
 			}
 		}
 	});
+	*/
 };
 
 daemonProcess();
