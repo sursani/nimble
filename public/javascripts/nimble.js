@@ -10,10 +10,22 @@ var showOldTweets = function (tweets) {
 	}
 };
 
-function formatTweetList(data){
-	return "<li id='tweet-stream'><div id='profile-image'><img src='" + data.profile_image_url + "'/></div><div id='tweet-info'><div id='user'>" + data.user_name + ' ' + 
-									data.full_name + "</div><div id='text'>" + data.text + "</div></div></li>";
-}
+var formatTweetList = function (data) {
+	return "<li id='tweet-stream'><div id='profile-image'><img src='" + data.profile_image_url + "'/></div><div id='tweet-info'><div id='user'>" + data.user_name + ' ' + data.full_name + "</div><div id='text'>" + data.text + "</div><div class='date'>" + $.timeago(new Date(data.created_on)) + "</div></div></li>";
+};
+
+var ISODateString = function (d) {
+	console.log(d);
+    function pad(n) {
+        return n < 10 ? '0' + n : n
+    }
+    return d.getUTCFullYear()+'-'
+    	+ pad(d.getUTCMonth()+1)+'-'
+    	+ pad(d.getUTCDate())+'T'
+    	+ pad(d.getUTCHours())+':'
+    	+ pad(d.getUTCMinutes())+':'
+    	+ pad(d.getUTCSeconds())+'Z'
+};
 
 var socket = io.connect();
 
