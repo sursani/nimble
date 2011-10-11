@@ -1,17 +1,17 @@
 var showNewTweets = function (tweets) {
 	for (var i=0; i<tweets.length; i++) {
-		$('#twitterstream ul').prepend(formatTweetList(tweets[i]));
+		$('.twitterstream ul').prepend(formatTweetList(tweets[i]));
 	}
 };
 
 var showOldTweets = function (tweets) {
 	for (var i=0; i<tweets.length; i++) {
-		$('#twitterstream ul').append(formatTweetList(tweets[i]));
+		$('.twitterstream ul').append(formatTweetList(tweets[i]));
 	}
 };
 
 var formatTweetList = function (data) {
-	return "<li id='tweet-stream'><div id='profile-image'><img src='" + data.profile_image_url + "'/></div><div id='tweet-info'><div id='user'>" + data.user_name + ' ' + data.full_name + "</div><div id='text'>" + data.text + "</div><div class='date'>" + $.timeago(new Date(data.created_on)) + "</div></div></li>";
+	return "<li class='tweet-stream'><div class='profile-image'><img src='" + data.profile_image_url + "'/></div><div class='tweet-info'><div class='user'>" + data.user_name + ' ' + data.full_name + "</div><div class='text'>" + data.text + "</div><div class='date'>" + $.timeago(new Date(data.created_on)) + "</div></div></li>";
 };
 
 var ISODateString = function (d) {

@@ -1,16 +1,16 @@
 <%= title %>
-<div id="twitterstream">
-	<ul id="tweet-list">
+<div class="twitterstream">
+	<ul class="tweet-list">
 		<% for(var i=0; i<tweets.length; i++) { %>
-			<li id="tweet-stream">
-				<div id="profile-image">
+			<li class="tweet-stream">
+				<div class="profile-image">
 					<img src='<%= tweets[i].profile_image_url %>'/>
 				</div>
-				<div id="tweet-info">
-					<div id="user">
+				<div class="tweet-info">
+					<div class="user">
 						<%= tweets[i].user_name %><%= tweets[i].full_name %>
 					</div>
-					<div id="text">
+					<div class="text">
 						<%= tweets[i].text %>
 					</div>
 					<div class="date">
