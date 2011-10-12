@@ -1,28 +1,39 @@
 <%= title %>
 <div class="twitterstream">
 	<ul class="tweet-list">
-		<% for(var i=0; i<tweets.length; i++) { %>
+		<% for(var i=0; i<model.tweets.length; i++) { %>
 			<li class="tweet-stream">
 				<div class="profile-image">
-					<img src='<%= tweets[i].profile_image_url %>'/>
+					<img src='<%= model.tweets[i].profile_image_url %>'/>
 				</div>
 				<div class="tweet-info">
 					<div class="user">
-						<%= tweets[i].user_name %><%= tweets[i].full_name %>
+						<%= model.tweets[i].user_name %><%= model.tweets[i].full_name %>
 					</div>
 					<div class="text">
-						<%= tweets[i].text %>
+						<%= model.tweets[i].text %>
 					</div>
 					<div class="date">
-						<%= tweets[i].created_on %>
+						<%= model.tweets[i].created_on %>
 					</div>
 				</div>
 			</li>
 		<% } %>
 	</ul>
 </div>
-
 <a id="showMore" href="#">Show More</a>
+
+<div class="friends">
+	<ul>
+		<% for(var i=0; i<model.friends.length; i++) { %>
+			<li class="name">
+				<%= model.friends[i].full_name %>
+			</li>
+		<% } %>
+	</ul>
+</div>
+
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script src="/javascripts/jquery.vticker.1.4.js"></script>
 <script src="/javascripts/jquery.timeago.js" type="text/javascript"></script>

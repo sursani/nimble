@@ -19,11 +19,7 @@ FriendProvider = function(){};
 
 // Find Tweet by Id
 FriendProvider.prototype.find = function (callback) {
-  Friend.find({}, function (err, friend) {
-    if (!err) {
-		callback(null, friend);
-	}
-  });
+  Friend.find().sort('full_name', 'ascending').run(callback);
 };
 
 // Create a new Tweet

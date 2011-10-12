@@ -9,14 +9,17 @@ var access_token_secret= "kuA0Ub5GXnVT8cOWe8Rn9OcUHhSBaHqVOZ2fbDg0CHo";
 var screen_name = "CarTweetin";
 
 var daemonProcess = function(){
-	/*
+	
 	twitter.getUserStream(access_token, access_token_secret, function(tweet){
 		tweetProvider.save(tweet, function(){
 			console.log("saving tweet by " + tweet.user_name);
 		});
 	}); 
-	*/
 	
+	
+	//the code below just adds friends to the database
+	//before adding we need to verify if a friend exist then update
+	/*
 	var ids = [];
 	var batchIds = [];
 	
@@ -60,7 +63,7 @@ var daemonProcess = function(){
 			};
 		}
 	});
-	
+	*/
 };
 
 daemonProcess();
