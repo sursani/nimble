@@ -9,6 +9,7 @@ var Friend = new Schema({
   , id    					: Number
   , full_name				: String
   , description				: String
+  , friend_id				: Number
 });
 
 mongoose.model('Friend', Friend);
@@ -29,7 +30,7 @@ FriendProvider.prototype.find = function (callback) {
 FriendProvider.prototype.save = function (params, callback) {
   var friend = new Friend({
 						user_name: params['user_name'],
-						id: params['text'],
+						friend_id: params['friend_ID'],
 						full_name: params['full_name'],
 						description: params['description']
 					});

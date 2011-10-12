@@ -9,32 +9,58 @@ var access_token_secret= "kuA0Ub5GXnVT8cOWe8Rn9OcUHhSBaHqVOZ2fbDg0CHo";
 var screen_name = "CarTweetin";
 
 var daemonProcess = function(){
+	/*
 	twitter.getUserStream(access_token, access_token_secret, function(tweet){
 		tweetProvider.save(tweet, function(){
 			console.log("saving tweet by " + tweet.user_name);
 		});
 	}); 
+	*/
 	
-	/*
+	var ids = [];
+	var batchIds = [];
+	
+	console.log(screen_name);
 	twitter.getFriendsIds(access_token, access_token_secret, screen_name, function(err, data){
 		if (!err){
-			for (var i=0; i<=data.length-1; i++){
-				twitter.getUserDetails(access_token,access_token_secret,data[i], function(err,data){
-					console.log('get user for ' + data[i]);
-					var friend = {
-						id: data.id,
-						user_name: data.user_name,
-						full_name: data.full_name,
-						description: data.description
-					};
-					friendProvider.save(friend, function(){
-						console.log('saving ' + friend.full_name + ' to database');
-					});
-				});
+			for (var i=1; i<=data.length; i++){
+				if ((i % 100) == 0){
+					batchIds.push(ids.join(','));
+					ids = [];
+				} else {
+					ids.push(data[i-1]);
+				}	
 			}
+			
+			if (ids.length > 0) {
+				batchIds.push(ids.join(','));
+			}	
+			
+			for (var i=0; i <= batchIds.length-1; i++) {
+				console.log('batch: ' + batchIds[i]);
+				twitter.getUsers(access_token, access_token_secret, batchIds[i], function(err, users){
+					if (!err){
+						for (var j=0;j<=users.length-1;j++){
+							
+							var friend = {
+								friend_id: users[j].id,
+								user_name: users[j].screen_name,
+								full_name: users[j].name,
+								description: users[j].description
+							};
+							
+							friendProvider.save(friend, function(){
+								console.log('saving ' + friend.full_name + ' to database');
+							});
+							
+							console.log(users[j].name);
+						};
+					}
+				});
+			};
 		}
 	});
-	*/
+	
 };
 
 daemonProcess();
