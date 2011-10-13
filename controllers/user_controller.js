@@ -23,7 +23,7 @@ module.exports = {
 						userInfo.full_name = docs[0].full_name;
 				
 						res.render('user/user', {
-							title: userInfo.full_name + ' (@' + userInfo.user_name + ') - Nimble Celebrity Tweets',
+							title: userInfo.full_name + ' (@' + userInfo.user_name + ')',
 							model: viewModel
 						});
 					} else {
