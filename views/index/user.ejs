@@ -15,7 +15,7 @@
 				</div>
 				<div class="tweet-info">
 					<div class="user">
-						<%= model.tweets[i].full_name %> (@<%= model.tweets[i].user_name %>)
+						<%= model.tweets[i].full_name %> <span class="username"><%= model.tweets[i].user_name %></span>
 					</div>
 					<div class="text">
 						<%= model.tweets[i].text %>

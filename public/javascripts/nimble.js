@@ -11,7 +11,7 @@ var showOldTweets = function (tweets) {
 };
 
 var formatTweetList = function (data) {
-	return '<li class="tweet-stream"><div class="profile-image"><img src="' + data.profile_image_url + '"/></div><div class="tweet-info"><div class="user">' + data.full_name + ' (@' + data.user_name + ')' + '</div><div class="text">' + data.text + '</div><div class="date"><abbr class="timeago" title="' + ISODateString(new Date(data.created_on)) + '"></abbr></div></div></li>';
+	return '<li class="tweet-stream"><div class="profile-image"><img src="' + data.profile_image_url + '"/></div><div class="tweet-info"><div class="user">' + data.full_name + ' <span class="username">' + data.user_name + '</span>' + '</div><div class="text">' + data.text + '</div><div class="date"><abbr class="timeago" title="' + ISODateString(new Date(data.created_on)) + '"></abbr></div></div></li>';
 };
 
 var ISODateString = function (d) {
@@ -53,7 +53,7 @@ $('#showMore').click(function(e) {
 
 // DOM ready
 $(function () {
-	$('.date').each(function(i) {
+	$('div.date').each(function(i) {
 		var the_date = new Date($(this).text());
 		$(this).html('<abbr class="timeago" title="' + ISODateString(the_date) + '"></abbr>');
 	});
@@ -62,9 +62,14 @@ $(function () {
 		$(this).timeago();
 	});
 	
-	$('.text').livequery(function () {
+	$('div.text').livequery(function () {
 		var text = replaceURLWithHTMLLinks($(this).text());
 		$(this).html(text);
+	});
+	
+	$('span.username').livequery(function () {
+		var user_name = $(this).text();
+		$(this).html('<a href="/user/' + user_name + '">@' + user_name + '</a>');
 	});
 });
 
