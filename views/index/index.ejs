@@ -1,3 +1,9 @@
+<script>
+	var nimbleGlobal = {
+		nextPage: 2
+	};
+</script>
+
 <%= title %>
 <div class="twitterstream">
 	<ul class="tweet-list">
@@ -8,7 +14,7 @@
 				</div>
 				<div class="tweet-info">
 					<div class="user">
-						<%= model.tweets[i].full_name %> (<%= model.tweets[i].user_name %>)
+						<%= model.tweets[i].full_name %> (@<%= model.tweets[i].user_name %>)
 					</div>
 					<div class="text">
 						<%= model.tweets[i].text %>
@@ -40,27 +46,4 @@
 <script src="/javascripts/jquery.livequery.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/javascripts/nimble.js"></script>
-<script>
-	var nextPage = 2;
-	$('#showMore').click(function(e) {
-		e.preventDefault();
-		$.post('/getmoretweets', { page: nextPage }, function (data) {
-			if (data && data.length > 0) {
-				nextPage = nextPage + 1;
-				showOldTweets(data);
-			}
-		});
-	});
-	
-	$(function () {
-		$('.date').each(function(i) {
-			var the_date = new Date($(this).text());
-			$(this).html('<abbr class="timeago" title="' + ISODateString(the_date) + '"></abbr>');
-		});
-		
-		$('abbr.timeago').livequery(function () {
-			$(this).timeago();
-		});
-	});
-</script>
 
