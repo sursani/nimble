@@ -31,7 +31,7 @@ Downloader.prototype.download = function() {
 				self.emit('finished', tweets);
 			}
 		});
-    }, 5000);
+    }, 10000);
 }
 
 exports.Downloader = Downloader;

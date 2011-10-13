@@ -11,7 +11,7 @@ var showOldTweets = function (tweets) {
 };
 
 var formatTweetList = function (data) {
-	return "<li class='tweet-stream'><div class='profile-image'><img src='" + data.profile_image_url + "'/></div><div class='tweet-info'><div class='user'>" + data.full_name + '(' + data.user_name + ')' + "</div><div class='text'>" + data.text + "</div><div class='date'><abbr class='timeago' title='" + ISODateString(new Date(data.created_on)) + "'></abbr></div></div></li>";
+	return '<li class="tweet-stream"><div class="profile-image"><img src="' + data.profile_image_url + '"/></div><div class="tweet-info"><div class="user">' + data.full_name + ' (' + data.user_name + ')' + '</div><div class="text">' + data.text + '</div><div class="date"><abbr class="timeago" title="' + ISODateString(new Date(data.created_on)) + '"></abbr></div></div></li>';
 };
 
 var ISODateString = function (d) {

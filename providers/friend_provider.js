@@ -17,12 +17,12 @@ var Friend = mongoose.model('Friend');
 
 FriendProvider = function(){};
 
-// Find Tweet by Id
+// Find all Friends
 FriendProvider.prototype.find = function (callback) {
   Friend.find().sort('full_name', 'ascending').run(callback);
 };
 
-// Create a new Tweet
+// Create a new Friend
 FriendProvider.prototype.save = function (params, callback) {
   var friend = new Friend({
 						user_name: params['user_name'],

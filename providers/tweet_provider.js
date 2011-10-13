@@ -46,8 +46,8 @@ TweetProvider.prototype.getPagedTweets = function(page, callback) {
 
 // Create a new Tweet
 TweetProvider.prototype.save = function (params, callback) {
-	//Tweet.find({ tweet_id: params['tweet_id'] }, function (err, docs) {
-		//if (!err && docs == []) {
+	Tweet.find({ tweet_id: params['tweet_id'] }, function (err, docs) {
+		if (docs.length < 1) {
 			var tweet = new Tweet({
 					user_name: params['user_name'],
 					text: params['text'],
@@ -59,8 +59,8 @@ TweetProvider.prototype.save = function (params, callback) {
   			tweet.save(function (err) {
 				callback();
   			});
-		//}
-	//});
+		}
+	});
 };
 
 exports.TweetProvider = TweetProvider;
