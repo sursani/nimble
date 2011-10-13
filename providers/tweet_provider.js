@@ -39,9 +39,14 @@ TweetProvider.prototype.findLastTweet = function (callback) {
 
 var per_page = 3;
 
-// Get Latest Tweets
+// Get Paged Tweets
 TweetProvider.prototype.getPagedTweets = function(page, callback) {
 	Tweet.find().sort('created_on', 'descending').skip((page - 1) * per_page).limit(per_page).run(callback);
+};
+
+// Get Paged Tweets by User
+TweetProvider.prototype.getPagedTweetsByUser = function(page, user_name, callback) {
+	Tweet.find().where('user_name', user_name).sort('created_on', 'descending').skip((page - 1) * per_page).limit(per_page).run(callback);
 };
 
 // Create a new Tweet

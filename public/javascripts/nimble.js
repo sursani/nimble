@@ -33,9 +33,19 @@ var replaceURLWithHTMLLinks = function (text) {
 
 $('#showMore').click(function(e) {
 	e.preventDefault();
-	$.post('/getmoretweets', { page: nimbleGlobal.nextPage }, function (data) {
+	
+	var more_tweets_url = '/getmoretweets';
+	var params = {};
+	params.page = nimbleGlobal.next_page;
+	
+	if (nimbleGlobal.user_name) {
+		params.user_name = nimbleGlobal.user_name;
+		more_tweets_url = '/user/getmoretweetsbyuser';
+	}
+	
+	$.post(more_tweets_url, params, function (data) {
 		if (data && data.length > 0) {
-			nimbleGlobal.nextPage = nimbleGlobal.nextPage + 1;
+			nimbleGlobal.next_page = nimbleGlobal.next_page + 1;
 			showOldTweets(data);
 		}
 	});

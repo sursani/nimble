@@ -1,6 +1,7 @@
 <script>
 	var nimbleGlobal = {
-		next_page: 2
+		next_page: 2,
+		user_name: '<%= model.user_name %>'
 	};
 </script>
 
@@ -29,16 +30,6 @@
 </div>
 <a id="showMore" href="#">Show More</a>
 
-<div class="friends">
-	<ul>
-		<% for(var i=0; i<model.friends.length; i++) { %>
-			<li class="name">
-				<%= model.friends[i].full_name %>
-			</li>
-		<% } %>
-	</ul>
-</div>
-
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 <script src="/javascripts/jquery.vticker.1.4.js"></script>
@@ -46,4 +37,3 @@
 <script src="/javascripts/jquery.livequery.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script src="/javascripts/nimble.js"></script>
-
