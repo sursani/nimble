@@ -1,12 +1,14 @@
 var showNewTweets = function (tweets) {
 	for (var i=0; i<tweets.length; i++) {
-		$('.twitterstream ul').prepend(formatTweetList(tweets[i]));
+		var new_tweet = formatTweetList(tweets[i]);
+		$(new_tweet).hide().prependTo('div.twitterstream ul').fadeIn('slow');
 	}
 };
 
 var showOldTweets = function (tweets) {
 	for (var i=0; i<tweets.length; i++) {
-		$('.twitterstream ul').append(formatTweetList(tweets[i]));
+		var new_tweet = formatTweetList(tweets[i]);
+		$(new_tweet).hide().appendTo('div.twitterstream ul').fadeIn('slow');
 	}
 };
 

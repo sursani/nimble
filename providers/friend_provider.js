@@ -24,15 +24,19 @@ FriendProvider.prototype.find = function (callback) {
 
 // Create a new Friend
 FriendProvider.prototype.save = function (params, callback) {
-  var friend = new Friend({
-						user_name: params['user_name'],
-						friend_id: params['friend_ID'],
-						full_name: params['full_name'],
-						description: params['description']
-					});
-  friend.save(function (err) {
-	callback();
-  });
+	Friend.find({ friend_id: params['friend_ID'] }, function (err, docs) {
+		if (docs.length < 1) {
+			var friend = new Friend({
+				user_name: params['user_name'],
+				friend_id: params['friend_ID'],
+				full_name: params['full_name'],
+				description: params['description']
+			});
+			friend.save(function (err) {
+				callback();
+			});
+		}
+	});
 };
 
 exports.FriendProvider = FriendProvider;

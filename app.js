@@ -29,6 +29,18 @@ app.configure('production', function() {
   app.use(express.errorHandler());
 });
 
+app.use(function(req, res, next){
+  res.render('404', { status: 404, url: req.url, title: '404 - Page Not Found' });
+});
+
+app.use(function(err, req, res, next){
+  res.render('500', {
+      status: err.status || 500
+    , error: err
+	, title: 'Oops something bad happened'
+  });
+});
+
 // load routes
 require('./routes')(app);
 

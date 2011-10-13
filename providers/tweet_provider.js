@@ -9,12 +9,12 @@ var Schema = mongoose.Schema
 
 var Tweet = new Schema({
     user_name     			: String
-  , user_name_lower			: String
+  , user_name_lower			: { type: String, index: true }
   , text    				: String
   , profile_image_url 		: String
   , full_name				: String
-  , created_on				: Date
-  , tweet_id				: Number
+  , created_on				: { type: Date, index: true }
+  , tweet_id				: { type: Number, index: { unique: true }  }
 });
 
 mongoose.model('Tweet', Tweet);
@@ -24,11 +24,11 @@ TweetProvider = function(){};
 
 // Find Tweet by Id
 TweetProvider.prototype.findById = function (id, callback) {
-  Tweet.findById(id, function (err, tweet) {
-    if (!err) {
-		callback(null, site);
-	}
-  });
+	Tweet.findById(id, function (err, tweet) {
+		if (!err) {
+			callback(null, site);
+		}
+	});
 };
 
 // Find Tweet by Date
