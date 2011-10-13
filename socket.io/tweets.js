@@ -20,7 +20,7 @@ TweetProvider.findLastTweet(function(err, docs) {
 	}
 });
 
-Downloader.prototype.download = function(last_tweet) {
+Downloader.prototype.download = function() {
     var self = this;
 
     setInterval(function() {

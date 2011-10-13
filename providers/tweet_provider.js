@@ -29,7 +29,6 @@ TweetProvider.prototype.findById = function (id, callback) {
 
 // Find Tweet by Date
 TweetProvider.prototype.findByLastDate = function (lastDate, callback) {
-	console.log('lastDate inside findByLastDate ' + lastDate);
 	Tweet.where('created_on').gt(lastDate).run(callback);
 };
 
@@ -47,17 +46,21 @@ TweetProvider.prototype.getPagedTweets = function(page, callback) {
 
 // Create a new Tweet
 TweetProvider.prototype.save = function (params, callback) {
-  var tweet = new Tweet({
-						user_name: params['user_name'],
-						text: params['text'],
-						profile_image_url: params['profile_image_url'],
-						full_name: params['full_name'],
-						created_on: params['created_on'],
-						tweet_id: params['tweet_id']
-					});
-  tweet.save(function (err) {
-	callback();
-  });
+	//Tweet.find({ tweet_id: params['tweet_id'] }, function (err, docs) {
+		//if (!err && docs == []) {
+			var tweet = new Tweet({
+					user_name: params['user_name'],
+					text: params['text'],
+					profile_image_url: params['profile_image_url'],
+					full_name: params['full_name'],
+					created_on: params['created_on'],
+					tweet_id: params['tweet_id']
+			});
+  			tweet.save(function (err) {
+				callback();
+  			});
+		//}
+	//});
 };
 
 exports.TweetProvider = TweetProvider;

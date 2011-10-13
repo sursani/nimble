@@ -11,11 +11,10 @@ var showOldTweets = function (tweets) {
 };
 
 var formatTweetList = function (data) {
-	return "<li class='tweet-stream'><div class='profile-image'><img src='" + data.profile_image_url + "'/></div><div class='tweet-info'><div class='user'>" + data.user_name + ' ' + data.full_name + "</div><div class='text'>" + data.text + "</div><div class='date'>" + $.timeago(new Date(data.created_on)) + "</div></div></li>";
+	return "<li class='tweet-stream'><div class='profile-image'><img src='" + data.profile_image_url + "'/></div><div class='tweet-info'><div class='user'>" + data.full_name + '(' + data.user_name + ')' + "</div><div class='text'>" + data.text + "</div><div class='date'><abbr class='timeago' title='" + ISODateString(new Date(data.created_on)) + "'></abbr></div></div></li>";
 };
 
 var ISODateString = function (d) {
-	console.log(d);
     function pad(n) {
         return n < 10 ? '0' + n : n
     }
@@ -24,7 +23,7 @@ var ISODateString = function (d) {
     	+ pad(d.getUTCDate())+'T'
     	+ pad(d.getUTCHours())+':'
     	+ pad(d.getUTCMinutes())+':'
-    	+ pad(d.getUTCSeconds())+'Z'
+    	+ pad(d.getUTCSeconds())+'Z';
 };
 
 var socket = io.connect();

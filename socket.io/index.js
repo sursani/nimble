@@ -11,6 +11,6 @@ module.exports = function(app) {
 			io.sockets.emit('newtweets', new_tweets);
 		});
 
-		downloader.download('tweets here... people');
+		downloader.download();
 	});
 };
