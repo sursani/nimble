@@ -1,12 +1,12 @@
 <script>
 	var nimbleGlobal = {
-		next_page: 2
+		next_page: 2,
+		user_name: '<%= model.user_name %>'
 	};
 </script>
 
 <div class="wrapper">
 	<div class="twitterstream">
-		<h2><%= title %></h2>
 		<ul class="tweet-list">
 			<% for(var i=0; i<model.tweets.length; i++) { %>
 				<li class="tweet-stream">
@@ -40,4 +40,3 @@
 		<% } %>
 	</ul>
 </div>
-

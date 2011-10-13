@@ -1,6 +1,7 @@
 body {
   padding: 10px;
-  font: 14px "Lucida Sans Unicode", Helvetica, Arial, sans-serif;}
+  font: 14px "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+}
 
 a {
   color: #00B7FF;
@@ -14,6 +15,25 @@ a {
 	margin-right:10px;
     width:300px;
     height:200px;
+}
+
+.container {
+	width: 800px;
+	margin: 0 auto;
+}
+
+.header {
+	position: relative;
+}
+
+.twitterstream {
+	float: left;
+	width: 600px;
+}
+
+.friends {
+	float: right;
+	width: 200px;
 }
 
 .tweet-stream {
@@ -35,4 +55,13 @@ a {
 
 .tweet-list {
 	list-style-type: none;
+}
+
+.friend-list {
+	list-style-type: none;
+}
+
+.footer {
+	clear: both;
+	width: 100%;
 }
