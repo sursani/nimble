@@ -9,14 +9,18 @@ var TweetProvider = new TweetProvider();
 module.exports = {
 	displayUserTweets: function (req, res) {
 		TweetProvider.getPagedTweetsByUser(1, req.params.user_name, function(err, docs) {
-			if (!err) {
+			if (!err && docs.length > 0) {
 				var viewModel = {
 					user_name: req.params.user_name,
 					tweets: docs
 				};
 				
+				var userInfo = {};
+				userInfo.user_name = docs[0].user_name;
+				userInfo.full_name = docs[0].full_name;
+				
 				res.render('index/user', {
-					title: 'Nimble Celebrity Tweets for ' + req.params.user_name,
+					title: userInfo.full_name + ' (@' + userInfo.user_name + ') - Nimble Celebrity Tweets',
 					model: viewModel
 				});
 			} else {

@@ -81,5 +81,17 @@ socket.on('connect', function() {
 });
 
 socket.on('newtweets', function (new_tweets) {
-	showNewTweets(new_tweets);
+	if (nimbleGlobal.user_name) {
+		var new_user_tweets = [];
+		for (var i=0; i<new_tweets.length; i++) {
+			if (new_tweets[i].user_name === nimbleGlobal.user_name) {
+				new_user_tweets.push(new_tweets[i]);
+			}
+		}
+		new_tweets = new_user_tweets;
+	}
+	
+	if (new_tweets.length > 0) {
+		showNewTweets(new_tweets);
+	}
 });

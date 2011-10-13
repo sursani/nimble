@@ -1,3 +1,6 @@
+// constant
+var per_page = 10;
+
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/nimble');
 
@@ -6,6 +9,7 @@ var Schema = mongoose.Schema
 
 var Tweet = new Schema({
     user_name     			: String
+  , user_name_lower			: String
   , text    				: String
   , profile_image_url 		: String
   , full_name				: String
@@ -37,8 +41,6 @@ TweetProvider.prototype.findLastTweet = function (callback) {
 	Tweet.find().sort('created_on', 'descending').limit(1).run(callback);
 };
 
-var per_page = 3;
-
 // Get Paged Tweets
 TweetProvider.prototype.getPagedTweets = function(page, callback) {
 	Tweet.find().sort('created_on', 'descending').skip((page - 1) * per_page).limit(per_page).run(callback);
@@ -46,7 +48,7 @@ TweetProvider.prototype.getPagedTweets = function(page, callback) {
 
 // Get Paged Tweets by User
 TweetProvider.prototype.getPagedTweetsByUser = function(page, user_name, callback) {
-	Tweet.find().where('user_name', user_name).sort('created_on', 'descending').skip((page - 1) * per_page).limit(per_page).run(callback);
+	Tweet.find().where('user_name_lower', user_name.toLowerCase()).sort('created_on', 'descending').skip((page - 1) * per_page).limit(per_page).run(callback);
 };
 
 // Create a new Tweet
@@ -55,6 +57,7 @@ TweetProvider.prototype.save = function (params, callback) {
 		if (docs.length < 1) {
 			var tweet = new Tweet({
 					user_name: params['user_name'],
+					user_name_lower: params['user_name'].toLowerCase(),
 					text: params['text'],
 					profile_image_url: params['profile_image_url'],
 					full_name: params['full_name'],
