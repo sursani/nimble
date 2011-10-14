@@ -22,6 +22,8 @@ module.exports = {
 							title: 'Nimble Celebrity Tweets',
 							model: viewModel
 						});
+					} else {
+						res.end();
 					}
 				});
 			} else {
