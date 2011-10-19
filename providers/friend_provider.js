@@ -6,10 +6,9 @@ var Schema = mongoose.Schema
 
 var Friend = new Schema({
     user_name     			: String
-  , id    					: Number
+  , friend_id    			: Number
   , full_name				: String
   , description				: String
-  , friend_id				: Number
 });
 
 mongoose.model('Friend', Friend);
@@ -28,10 +27,11 @@ FriendProvider.prototype.save = function (params, callback) {
 		if (docs.length < 1) {
 			var friend = new Friend({
 				user_name: params['user_name'],
-				friend_id: params['friend_ID'],
+				friend_id: params['friend_id'],
 				full_name: params['full_name'],
 				description: params['description']
 			});
+			console.log('saving user ' + friend.friend_id);
 			friend.save(function (err) {
 				callback();
 			});
