@@ -11,10 +11,18 @@ a {
 	width: 500px;
 }
 
-#messageText {
-	margin-right:10px;
-    width:300px;
-    height:200px;
+.user {
+	font-size: 18px;
+}
+
+.text {
+	font-size: 15px;
+}
+
+.date {
+	font-size: 10px;
+	color: #AAAAAA;
+	padding-top: 10px;
 }
 
 .container {
@@ -37,7 +45,7 @@ a {
 }
 
 .tweet-stream {
-	height: 70px;	
+	height: 97px;	
 }
 
 .profile-image {
