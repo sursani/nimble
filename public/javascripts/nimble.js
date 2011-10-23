@@ -73,6 +73,16 @@ $(function () {
 		var user_name = $(this).text();
 		$(this).html('<a href="/' + nimbleGlobal.category + '/user/' + user_name + '">@' + user_name + '</a>');
 	});
+	
+	$('.home').vTicker({
+		speed: 500,
+		pause: 3000,
+		showItems: 3,
+		animation: 'fade',
+		mousePause: false,
+		height: 0,
+		direction: 'up'
+	});
 });
 
 // Socket IO

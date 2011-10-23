@@ -1,1 +1,35 @@
-i'm index!
+i'm <%= title %>
+
+<div class="wrapper">
+	<% for (var i=0; i<model.tweetsByCategory.length; i++) { %>
+		<% if (model.tweetsByCategory[i]) { %>
+			<div>
+				Celebrity
+			</div>
+			<div class="twitterstream home">
+				<ul class="tweet-list">
+					<% if (model.tweetsByCategory[i].tweets) { %>
+						<% for (var j=0; j<model.tweetsByCategory[i].tweets.length; j++) { %>
+							<li class="tweet-stream">
+								<div class="profile-image">
+									<img src='<%= model.tweetsByCategory[i].tweets[j].profile_image_url %>'/>
+								</div>
+								<div class="tweet-info">
+									<div class="user">
+										<%= model.tweetsByCategory[i].tweets[j].full_name %>
+									</div>
+									<div class="text">
+										<%= model.tweetsByCategory[i].tweets[j].text %>
+									</div>
+									<div class="date">
+										<%= model.tweetsByCategory[i].tweets[j].created_on %>
+									</div>
+								</div>
+							</li>
+						<% } %>
+					<% } %>
+				</ul>
+			</div>
+		<% } %>
+	<% } %>
+</div>
