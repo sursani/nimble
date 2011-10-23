@@ -1,8 +1,7 @@
 <script>
 	var nimbleGlobal = {
 		next_page: 2,
-		category: '<%= model.category %>',
-		user_name: '<%= model.user_name %>'
+		category: '<%= model.category %>'
 	};
 </script>
 
@@ -37,8 +36,9 @@
 	<ul class="friend-list">
 		<% for(var i=0; i<model.friends.length; i++) { %>
 			<li class="friend">
-				<a href="/user/<%= model.friends[i].user_name %>"><%= model.friends[i].full_name %></a>
+				<a href="/<%= model.category %>/user/<%= model.friends[i].user_name %>"><%= model.friends[i].full_name %></a>
 			</li>
 		<% } %>
 	</ul>
 </div>
+

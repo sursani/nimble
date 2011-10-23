@@ -4,17 +4,19 @@ mongoose.connect('mongodb://localhost/nimble');
 var Schema = mongoose.Schema
   , ObjectId = Schema.ObjectId;
 
-var Friend = new Schema({
+var FriendSchema = new Schema({
     user_name     			: String
   , friend_id    			: Number
   , full_name				: String
   , description				: String
 });
 
-mongoose.model('Friend', Friend);
-var Friend = mongoose.model('Friend');
+var Friend = null;
 
-FriendProvider = function(){};
+FriendProvider = function (category) {
+	mongoose.model(category + '.Friend', FriendSchema);
+	Friend = mongoose.model(category + '.Friend');
+};
 
 // Find all Friends
 FriendProvider.prototype.find = function (callback) {

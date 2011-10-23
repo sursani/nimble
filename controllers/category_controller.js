@@ -12,7 +12,8 @@ function isValidCategory(catArray, cat) {
 }
 
 module.exports = {
-	displayUserTweets: function (req, res) {
+
+	index: function (req, res) {
 		var category = req.params.category.toLowerCase();
 		if (!isValidCategory(categories, category)) {
 			res.end();
@@ -20,24 +21,18 @@ module.exports = {
 		
 		var tweetProvider = new TweetProvider(category);
 		var friendProvider = new FriendProvider(category);
-		
-		tweetProvider.getPagedTweetsByUser(1, req.params.user_name, function(err, docs) {
-			if (!err && docs.length > 0) {
+		tweetProvider.getPagedTweets(1, function(err, docs) {
+			if (!err) {
 				friendProvider.find(function(err, friends) {
 					if (!err) {
 						var viewModel = {
-							user_name: req.params.user_name,
 							tweets: docs,
 							friends: friends,
 							category: category
 						};
-				
-						var userInfo = {};
-						userInfo.user_name = docs[0].user_name;
-						userInfo.full_name = docs[0].full_name;
-				
-						res.render('user/user', {
-							title: userInfo.full_name + ' (@' + userInfo.user_name + ')',
+						
+						res.render('category/index', {
+							title: 'Nimble Celebrity Tweets',
 							model: viewModel
 						});
 					} else {
@@ -50,15 +45,14 @@ module.exports = {
 		});
 	},
 	
-	getMoreTweetsByUser: function (req, res) {
+	getMoreTweets: function (req, res) {
 		var category = req.params.category;
 		if (!isValidCategory(categories, category)) {
 			res.end();
 		}
 		
 		var tweetProvider = new TweetProvider(category);
-		
-		tweetProvider.getPagedTweetsByUser(req.body.page, req.body.user_name, function(err, docs) {
+		tweetProvider.getPagedTweets(req.body.page, function(err, docs) {
 			if (!err) {
 				res.json(docs);
 			} else {

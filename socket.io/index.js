@@ -7,7 +7,7 @@ module.exports = function(app) {
 	io.sockets.on('connection', function (socket) {
 		var downloader = new tweets.Downloader();
 
-		downloader.on('finished', function(new_tweets) {
+		downloader.on('finished', function (new_tweets) {
 			io.sockets.emit('newtweets', new_tweets);
 		});
 

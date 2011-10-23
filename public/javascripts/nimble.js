@@ -36,13 +36,13 @@ var replaceURLWithHTMLLinks = function (text) {
 $('#showMore').click(function(e) {
 	e.preventDefault();
 	
-	var more_tweets_url = '/getmoretweets';
+	var more_tweets_url = '/' + nimbleGlobal.category + '/getmoretweets';
 	var params = {};
 	params.page = nimbleGlobal.next_page;
 	
 	if (nimbleGlobal.user_name) {
 		params.user_name = nimbleGlobal.user_name;
-		more_tweets_url = '/user/getmoretweetsbyuser';
+		more_tweets_url = '/' + nimbleGlobal.category + '/user/getmoretweetsbyuser';
 	}
 	
 	$.post(more_tweets_url, params, function (data) {
@@ -71,7 +71,7 @@ $(function () {
 	
 	$('span.username').livequery(function () {
 		var user_name = $(this).text();
-		$(this).html('<a href="/user/' + user_name + '">@' + user_name + '</a>');
+		$(this).html('<a href="/' + nimbleGlobal.category + '/user/' + user_name + '">@' + user_name + '</a>');
 	});
 });
 
@@ -79,21 +79,28 @@ $(function () {
 var socket = io.connect();
 
 socket.on('connect', function() {
-	console.log('connecting to socket.io');
+	//console.log('connecting to socket.io');
 });
 
 socket.on('newtweets', function (new_tweets) {
-	if (nimbleGlobal.user_name) {
-		var new_user_tweets = [];
+	var tweets = [];
+	
+	if (nimbleGlobal.category && nimbleGlobal.user_name) {
 		for (var i=0; i<new_tweets.length; i++) {
-			if (new_tweets[i].user_name === nimbleGlobal.user_name) {
-				new_user_tweets.push(new_tweets[i]);
+			if (new_tweets[i].user_name === nimbleGlobal.user_name &&
+				new_tweets[i].category === nimbleGlobal.category) {
+				tweets.push(new_tweets[i]);
 			}
 		}
-		new_tweets = new_user_tweets;
+	} else if (nimbleGlobal.category) {
+		for (var i=0; i<new_tweets.length; i++) {
+			if (new_tweets[i].category === nimbleGlobal.category) {
+				tweets.push(new_tweets[i]);
+			}
+		}
 	}
 	
-	if (new_tweets.length > 0) {
-		showNewTweets(new_tweets);
+	if (tweets.length > 0) {
+		showNewTweets(tweets);
 	}
 });

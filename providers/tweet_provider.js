@@ -7,7 +7,7 @@ mongoose.connect('mongodb://localhost/nimble');
 var Schema = mongoose.Schema
   , ObjectId = Schema.ObjectId;
 
-var Tweet = new Schema({
+var TweetSchema = new Schema({
     user_name     			: String
   , user_name_lower			: { type: String, index: true }
   , text    				: String
@@ -17,10 +17,12 @@ var Tweet = new Schema({
   , tweet_id				: { type: Number, index: { unique: true }  }
 });
 
-mongoose.model('Tweet', Tweet);
-var Tweet = mongoose.model('Tweet');
+var Tweet = null;
 
-TweetProvider = function(){};
+TweetProvider = function (category) {
+	mongoose.model(category + '.Tweet', TweetSchema);
+	Tweet = mongoose.model(category + '.Tweet');
+};
 
 // Find Tweet by Id
 TweetProvider.prototype.findById = function (id, callback) {
