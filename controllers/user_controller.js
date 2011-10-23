@@ -15,7 +15,7 @@ module.exports = {
 	displayUserTweets: function (req, res) {
 		var category = req.params.category.toLowerCase();
 		if (!isValidCategory(categories, category)) {
-			res.end();
+			next();
 		}
 		
 		var tweetProvider = new TweetProvider(category);
@@ -41,11 +41,11 @@ module.exports = {
 							model: viewModel
 						});
 					} else {
-						res.end();
+						next();
 					}
 				});
 			} else {
-				res.end();
+				next();
 			}
 		});
 	},
@@ -53,7 +53,7 @@ module.exports = {
 	getMoreTweetsByUser: function (req, res) {
 		var category = req.params.category;
 		if (!isValidCategory(categories, category)) {
-			res.end();
+			next();
 		}
 		
 		var tweetProvider = new TweetProvider(category);
@@ -62,7 +62,7 @@ module.exports = {
 			if (!err) {
 				res.json(docs);
 			} else {
-				res.end();
+				next();
 			}
 		});
 	}

@@ -13,10 +13,10 @@ function isValidCategory(catArray, cat) {
 
 module.exports = {
 
-	index: function (req, res) {
+	index: function (req, res, next) {
 		var category = req.params.category.toLowerCase();
 		if (!isValidCategory(categories, category)) {
-			res.end();
+			next();
 		}
 		
 		var tweetProvider = new TweetProvider(category);
@@ -36,19 +36,19 @@ module.exports = {
 							model: viewModel
 						});
 					} else {
-						res.end();
+						next();
 					}
 				});
 			} else {
-				res.end();
+				next();
 			}
 		});
 	},
 	
-	getMoreTweets: function (req, res) {
+	getMoreTweets: function (req, res, next) {
 		var category = req.params.category;
 		if (!isValidCategory(categories, category)) {
-			res.end();
+			next();
 		}
 		
 		var tweetProvider = new TweetProvider(category);
@@ -56,7 +56,7 @@ module.exports = {
 			if (!err) {
 				res.json(docs);
 			} else {
-				res.end();
+				next();
 			}
 		});
 	}
