@@ -5,7 +5,7 @@ var TweetProvider = require('../providers/tweet_provider').TweetProvider;
 var FriendProvider = require('../providers/friend_provider').FriendProvider;
 
 module.exports = {
-	displayUserTweets: function (req, res) {
+	displayUserTweets: function (req, res, next) {
 		var category = req.params.category.toLowerCase();
 		if (!nimble.isValidCategory(category)) {
 			next();
@@ -43,7 +43,7 @@ module.exports = {
 		});
 	},
 	
-	getMoreTweetsByUser: function (req, res) {
+	getMoreTweetsByUser: function (req, res, next) {
 		var category = req.params.category.toLowerCase();
 		if (!nimble.isValidCategory(category)) {
 			next();
