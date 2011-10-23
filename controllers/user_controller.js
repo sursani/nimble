@@ -1,20 +1,13 @@
 var sys = require('sys');
-var twitter = require('twitter');
+var nimble = require('nimble');
 
 var TweetProvider = require('../providers/tweet_provider').TweetProvider;
 var FriendProvider = require('../providers/friend_provider').FriendProvider;
 
-// constants
-var categories = ['celebrity'];
-
-function isValidCategory(catArray, cat) {
-    return (catArray.indexOf(cat) != -1);
-}
-
 module.exports = {
 	displayUserTweets: function (req, res) {
 		var category = req.params.category.toLowerCase();
-		if (!isValidCategory(categories, category)) {
+		if (!nimble.isValidCategory(category)) {
 			next();
 		}
 		
@@ -51,8 +44,8 @@ module.exports = {
 	},
 	
 	getMoreTweetsByUser: function (req, res) {
-		var category = req.params.category;
-		if (!isValidCategory(categories, category)) {
+		var category = req.params.category.toLowerCase();
+		if (!nimble.isValidCategory(category)) {
 			next();
 		}
 		
