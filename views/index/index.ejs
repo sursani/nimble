@@ -2,7 +2,7 @@
 	<% for (var i=0; i<model.tweetsByCategory.length; i++) { %>
 		<% if (model.tweetsByCategory[i].tweets.length > 0) { %>
 			<div class="category-listing">
-				<a href="/<%= model.categories[i] %>" class="category-name"><%= model.categories[i] %></a>
+				<a href="/<%= model.tweetsByCategory[i].category %>" class="category-name"><%= model.tweetsByCategory[i].category %></a>
 			</div>
 			<div class="twitterstream-mini home">
 				<ul class="tweet-list">

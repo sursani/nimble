@@ -11,14 +11,14 @@ module.exports = {
 		if (nimble.isValidCategory(category)) {
 			var tweetProvider = new TweetProvider(category);
 			var friendProvider = new FriendProvider(category);
-			tweetProvider.getPagedTweets(1, function(err, docs) {
+			tweetProvider.getPagedTweets(1, category, function(err, docs, cat) {
 				if (!err) {
 					friendProvider.find(function(err, friends) {
 						if (!err) {
 							var viewModel = {
 								tweets: docs,
 								friends: friends,
-								category: category
+								category: cat
 							};
 						
 							res.render('category/index', {
@@ -42,7 +42,7 @@ module.exports = {
 		var category = req.params.category.toLowerCase();
 		if (nimble.isValidCategory(category)) {
 			var tweetProvider = new TweetProvider(category);
-			tweetProvider.getPagedTweets(req.body.page, function(err, docs) {
+			tweetProvider.getPagedTweets(req.body.page, category, function(err, docs) {
 				if (!err) {
 					res.json(docs);
 				} else {

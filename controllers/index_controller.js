@@ -11,9 +11,10 @@ module.exports = {
 		
 		for (var i=0; i<categories.length; i++) {
 			var tweetProvider = new TweetProvider(categories[i]);
-			tweetProvider.getPagedTweets(1, function (err, docs) {
+			tweetProvider.getPagedTweets(1, categories[i], function (err, docs, category) {
 				var m = {
-					tweets: docs
+					tweets: docs,
+					category: category
 				};
 				tweetsByCategory.push(m);
 				finalCallback();
@@ -23,8 +24,7 @@ module.exports = {
 		var finalCallback = function () {
 			if (categories.length === tweetsByCategory.length) {
 				var viewModel = {
-					tweetsByCategory: tweetsByCategory,
-					categories: categories
+					tweetsByCategory: tweetsByCategory
 				};
 				
 				res.render('index/index', {
