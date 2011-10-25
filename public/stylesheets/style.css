@@ -8,6 +8,14 @@ a {
   color: #00B7FF;
 }
 
+a.category-name {
+	font-size: 30px;
+}
+
+.category-listing {
+	padding: 10px 0;
+}
+
 .reglabel {
 	width: 500px;
 }
@@ -16,12 +24,27 @@ a {
 	font-size: 18px;
 }
 
+.user-mini {
+	font-size: 12px;
+}
+
 .text {
 	font-size: 15px;
 	padding-top: 3px;
 }
 
+.text-mini {
+	font-size: 11px;
+	padding-top: 3px;
+}
+
 .date {
+	font-size: 10px;
+	color: #AAAAAA;
+	padding-top: 10px;
+}
+
+.date-mini {
 	font-size: 10px;
 	color: #AAAAAA;
 	padding-top: 10px;
@@ -41,6 +64,11 @@ a {
 	width: 600px;
 }
 
+.twitterstream-mini {
+	float: left;
+	width: 400px;
+}
+
 .friends {
 	float: right;
 	width: 200px;
@@ -48,6 +76,10 @@ a {
 
 .tweet-stream {
 	height: 97px;	
+}
+
+.tweet-stream-mini {
+	height: 90px;	
 }
 
 .profile-image {
@@ -61,6 +93,13 @@ a {
 	padding-left: 10px;
 	width: 500px;
 	font-size: 12px;
+}
+
+.tweet-info-mini {
+	float: left;
+	padding-left: 10px;
+	width: 300px;
+	font-size: 10px;
 }
 
 .tweet-list {

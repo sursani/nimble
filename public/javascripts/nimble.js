@@ -55,7 +55,7 @@ $('#showMore').click(function(e) {
 
 // DOM ready
 $(function () {
-	$('div.date').each(function(i) {
+	$('div.date, div.date-mini').each(function(i) {
 		var the_date = new Date($(this).text());
 		$(this).html('<abbr class="timeago" title="' + ISODateString(the_date) + '"></abbr>');
 	});
