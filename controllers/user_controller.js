@@ -11,7 +11,7 @@ module.exports = {
 			var tweetProvider = new TweetProvider(category);
 			var friendProvider = new FriendProvider(category);
 		
-			tweetProvider.getPagedTweetsByUser(1, req.params.user_name, function(err, docs) {
+			tweetProvider.getPagedTweetsByUser(null, req.params.user_name, function(err, docs) {
 				if (!err && docs.length > 0) {
 					friendProvider.find(function(err, friends) {
 						if (!err) {
@@ -47,8 +47,7 @@ module.exports = {
 		var category = req.params.category.toLowerCase();
 		if (nimble.isValidCategory(category)) {	
 			var tweetProvider = new TweetProvider(category);
-		
-			tweetProvider.getPagedTweetsByUser(req.body.page, req.body.user_name, function(err, docs) {
+			tweetProvider.getPagedTweetsByUser(req.body.last_date, req.body.user_name, function(err, docs) {
 				if (!err) {
 					res.json(docs);
 				} else {

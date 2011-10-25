@@ -1,6 +1,5 @@
 <script>
 	var nimbleGlobal = {
-		next_page: 2,
 		category: '<%= model.category %>',
 		user_name: '<%= model.user_name %>'
 	};
@@ -25,6 +24,7 @@
 						<div class="date">
 							<%= model.tweets[i].created_on %>
 						</div>
+						<input type="hidden" class="pagingDate" value="<%= model.tweets[i].created_on %>" />
 					</div>
 				</li>
 			<% } %>

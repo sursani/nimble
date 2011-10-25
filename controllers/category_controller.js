@@ -11,7 +11,7 @@ module.exports = {
 		if (nimble.isValidCategory(category)) {
 			var tweetProvider = new TweetProvider(category);
 			var friendProvider = new FriendProvider(category);
-			tweetProvider.getPagedTweets(1, category, function(err, docs, cat) {
+			tweetProvider.getPagedTweets(null, category, function(err, docs, cat) {
 				if (!err) {
 					friendProvider.find(function(err, friends) {
 						if (!err) {
@@ -22,7 +22,7 @@ module.exports = {
 							};
 						
 							res.render('category/index', {
-								title: 'Nimble Celebrity Tweets',
+								title: 'Celebrity Tweets',
 								model: viewModel
 							});
 						} else {
@@ -42,7 +42,7 @@ module.exports = {
 		var category = req.params.category.toLowerCase();
 		if (nimble.isValidCategory(category)) {
 			var tweetProvider = new TweetProvider(category);
-			tweetProvider.getPagedTweets(req.body.page, category, function(err, docs) {
+			tweetProvider.getPagedTweets(req.body.last_date, category, function(err, docs) {
 				if (!err) {
 					res.json(docs);
 				} else {

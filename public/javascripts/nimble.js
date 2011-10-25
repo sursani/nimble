@@ -13,7 +13,7 @@ var showOldTweets = function (tweets) {
 };
 
 var formatTweetList = function (data) {
-	return '<li class="tweet-stream"><div class="profile-image"><img src="' + data.profile_image_url + '"/></div><div class="tweet-info"><div class="user">' + data.full_name + ' <span class="username">' + data.user_name + '</span>' + '</div><div class="text">' + data.text + '</div><div class="date"><abbr class="timeago" title="' + ISODateString(new Date(data.created_on)) + '"></abbr></div></div></li>';
+	return '<li class="tweet-stream"><div class="profile-image"><img src="' + data.profile_image_url + '"/></div><div class="tweet-info"><div class="user">' + data.full_name + ' <span class="username">' + data.user_name + '</span>' + '</div><div class="text">' + data.text + '</div><div class="date"><abbr class="timeago" title="' + ISODateString(new Date(data.created_on)) + '"></abbr></div><input type="hidden" class="pagingDate" value="' + data.created_on + '"/></div></li>';
 };
 
 var ISODateString = function (d) {
@@ -38,7 +38,7 @@ $('#showMore').click(function(e) {
 	
 	var more_tweets_url = '/' + nimbleGlobal.category + '/getmoretweets';
 	var params = {};
-	params.page = nimbleGlobal.next_page;
+	params.last_date =  $('.tweet-list .tweet-stream .pagingDate:last-child').last().val();
 	
 	if (nimbleGlobal.user_name) {
 		params.user_name = nimbleGlobal.user_name;
@@ -47,7 +47,6 @@ $('#showMore').click(function(e) {
 	
 	$.post(more_tweets_url, params, function (data) {
 		if (data && data.length > 0) {
-			nimbleGlobal.next_page = nimbleGlobal.next_page + 1;
 			showOldTweets(data);
 		}
 	});

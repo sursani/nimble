@@ -11,7 +11,7 @@ module.exports = {
 		
 		for (var i=0; i<categories.length; i++) {
 			var tweetProvider = new TweetProvider(categories[i]);
-			tweetProvider.getPagedTweets(1, categories[i], function (err, docs, category) {
+			tweetProvider.getPagedTweets(null, categories[i], function (err, docs, category) {
 				var m = {
 					tweets: docs,
 					category: category

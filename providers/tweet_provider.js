@@ -44,15 +44,38 @@ TweetProvider.prototype.findLastTweet = function (callback) {
 };
 
 // Get Paged Tweets
-TweetProvider.prototype.getPagedTweets = function(page, category, callback) {
-	Tweet.find().sort('created_on', 'descending').skip((page - 1) * per_page).limit(per_page).run(function (err, docs) {
-		callback(err, docs, category);
-	});
+TweetProvider.prototype.getPagedTweets = function(lastDate, category, callback) {
+	if (lastDate) {
+		var date = new Date(lastDate);
+		Tweet.find().where('created_on').lt(lastDate).sort('created_on', 'descending').limit(per_page).run(function (err, docs) {
+			callback(err, docs, category);
+		});
+	} else {
+		Tweet.find().sort('created_on', 'descending').limit(per_page).run(function (err, docs) {
+			callback(err, docs, category);
+		});
+	}
 };
 
 // Get Paged Tweets by User
-TweetProvider.prototype.getPagedTweetsByUser = function(page, user_name, callback) {
-	Tweet.find().where('user_name_lower', user_name.toLowerCase()).sort('created_on', 'descending').skip((page - 1) * per_page).limit(per_page).run(callback);
+TweetProvider.prototype.getPagedTweetsByUser = function(lastDate, user_name, callback) {
+	if (lastDate) {
+		var date = new Date(lastDate);
+		Tweet
+			.find()
+			.where('user_name_lower', user_name.toLowerCase())
+			.where('created_on').lt(date)
+			.sort('created_on', 'descending')
+			.limit(per_page)
+			.run(callback);
+	} else {
+		Tweet
+			.find()
+			.where('user_name_lower', user_name.toLowerCase())
+			.sort('created_on', 'descending')
+			.limit(per_page)
+			.run(callback);
+	}
 };
 
 // Create a new Tweet
