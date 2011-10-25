@@ -1,7 +1,8 @@
 body {
-  padding: 10px;
+  margin: 0;
+  padding: 0;
+  background: #f8f8f8;
   font: 14px "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
-  background: url("/images/bg.png") repeat scroll 0 0 transparent;
 }
 
 a {
@@ -21,7 +22,9 @@ a.category-name {
 }
 
 .user {
-	font-size: 18px;
+	font-size: 12px;
+	font-weight: bold;
+	font-family: Arial;
 }
 
 .user-mini {
@@ -29,7 +32,7 @@ a.category-name {
 }
 
 .text {
-	font-size: 15px;
+	font-size: 13px;
 	padding-top: 3px;
 }
 
@@ -40,8 +43,8 @@ a.category-name {
 
 .date {
 	font-size: 10px;
-	color: #AAAAAA;
-	padding-top: 10px;
+	color: #959595;
+	padding-top: 5px;
 }
 
 .date-mini {
@@ -75,7 +78,7 @@ a.category-name {
 }
 
 .tweet-stream {
-	height: 97px;	
+	height: 82px;	
 }
 
 .tweet-stream-mini {
@@ -108,9 +111,50 @@ a.category-name {
 
 .friend-list {
 	list-style-type: none;
+	font-size: 12px;
 }
 
 .footer {
 	clear: both;
 	width: 100%;
+}
+
+div#layout {
+	min-height:100%;
+   	position:relative;
+}
+
+div#header {
+ width: 100%;
+ height: 89px;
+ background: url("/images/header.png") 
+}
+
+div#logo {
+ margin-left: 30px;
+ width: 253px;
+ height: 80px;
+ background: url("/images/nimble_logo.png") 
+}
+
+div#footer {
+ position:absolute;
+ bottom:0;
+ width: 100%;
+ height: 50px;
+ background: url("/images/footer_bg.gif");
+ clear: both;
+}
+
+div.wrapper {
+min-height: 100%;
+height: auto;
+height: 100%;
+margin: 0 auto -4em;
+padding-bottom:50px; 
+}
+
+.push {
+	height: 50px;	
+	clear: both;
 }
