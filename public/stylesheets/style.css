@@ -7,6 +7,7 @@ body {
 
 a {
   color: #00B7FF;
+  text-decoration: none;
 }
 
 a.category-name {
@@ -75,6 +76,14 @@ a.category-name {
 .friends {
 	float: right;
 	width: 200px;
+}
+
+.user-name-data {
+	display: none;
+}
+
+input.search {
+	margin-left: 38px;
 }
 
 .tweet-stream {

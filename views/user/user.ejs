@@ -33,11 +33,13 @@
 	</div>
 </div>
 
-<div class="friends">
-	<ul class="friend-list">
+<div id="friends" class="friends">
+	<input class="search" placeholder="Search" />
+	<ul class="list friend-list">
 		<% for(var i=0; i<model.friends.length; i++) { %>
 			<li class="friend">
-				<a href="/user/<%= model.friends[i].user_name %>"><%= model.friends[i].full_name %></a>
+				<a href="/<%= model.category %>/user/<%= model.friends[i].user_name %>"><%= model.friends[i].full_name %></a>
+				<span class="user-name-data"><%= model.friends[i].full_name %></span>
 			</li>
 		<% } %>
 	</ul>

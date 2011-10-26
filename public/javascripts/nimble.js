@@ -82,6 +82,12 @@ $(function () {
 		height: 0,
 		direction: 'up'
 	});
+	
+	var templates = {
+		    valueNames: [ 'user-name-data']
+	};
+
+	var featureList = new List('friends', templates);
 });
 
 // Socket IO
