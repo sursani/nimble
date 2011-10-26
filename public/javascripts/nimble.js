@@ -33,6 +33,14 @@ var replaceURLWithHTMLLinks = function (text) {
     return text.replace(exp, '<a href="$1" target="_blank">$1</a>');
 };
 
+var showLoading = function() {
+	$('div.loading').show();
+};
+
+var hideLoading = function() {
+	$('div.loading').hide();
+};
+
 $('#showMore').click(function(e) {
 	e.preventDefault();
 	
@@ -45,7 +53,9 @@ $('#showMore').click(function(e) {
 		more_tweets_url = '/' + nimbleGlobal.category + '/user/getmoretweetsbyuser';
 	}
 	
+	showLoading();
 	$.post(more_tweets_url, params, function (data) {
+		hideLoading();
 		if (data && data.length > 0) {
 			showOldTweets(data);
 		}
@@ -83,6 +93,7 @@ $(function () {
 		direction: 'up'
 	});
 	
+	// enable search
 	var templates = {
 		    valueNames: [ 'user-name-data']
 	};

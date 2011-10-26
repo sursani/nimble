@@ -28,11 +28,16 @@
 				</li>
 			<% } %>
 		</ul>
-		<a id="showMore" href="#">Show More</a>
+		<div class="pagination">
+			<div class="loading">
+			  <p><img src="/images/loader.gif" /> Please Wait</p>
+			</div>
+			<a id="showMore" href="#">Show More</a>
+		</div>
 	</div>
 
 	<div id="friends" class="friends">
-		<input class="search" placeholder="Search" />
+		<input class="search" placeholder="Search <%= model.category %>" />
 		<ul class="list friend-list">
 			<% for(var i=0; i<model.friends.length; i++) { %>
 				<li class="friend">

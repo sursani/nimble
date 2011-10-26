@@ -34,7 +34,7 @@
 </div>
 
 <div id="friends" class="friends">
-	<input class="search" placeholder="Search" />
+	<input class="search" placeholder="Search <%= model.category %>" />
 	<ul class="list friend-list">
 		<% for(var i=0; i<model.friends.length; i++) { %>
 			<li class="friend">
