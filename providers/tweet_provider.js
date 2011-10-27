@@ -9,13 +9,15 @@ var Schema = mongoose.Schema
 
 var TweetSchema = new Schema({
     user_name     			: String
-  , user_name_lower			: { type: String, index: true }
+  , user_name_lower			: String
   , text    				: String
   , profile_image_url 		: String
   , full_name				: String
-  , created_on				: { type: Date, index: true }
+  , created_on				: Date
   , tweet_id				: { type: Number, index: { unique: true }  }
 });
+
+TweetSchema.index({ created_on: -1, user_name_lower: 1 });
 
 var Tweet = null;
 
