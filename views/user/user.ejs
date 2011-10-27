@@ -5,8 +5,9 @@
 	};
 </script>
 
-<div class="wrapper">
+<div class="container">
 	<div class="twitterstream">
+		<h3><a href="/<%= model.category %>"><-- back to <%= model.category %></a></h3>
 		<h1><%= title %></h1>
 		<ul class="tweet-list">
 			<% for(var i=0; i<model.tweets.length; i++) { %>
@@ -31,16 +32,15 @@
 		</ul>
 		<a id="showMore" href="#">Show More</a>
 	</div>
-</div>
-
-<div id="friends" class="friends">
-	<input class="search" placeholder="Search <%= model.category %>" />
-	<ul class="list friend-list">
-		<% for(var i=0; i<model.friends.length; i++) { %>
-			<li class="friend">
-				<a href="/<%= model.category %>/user/<%= model.friends[i].user_name %>"><%= model.friends[i].full_name %></a>
-				<span class="user-name-data"><%= model.friends[i].full_name %></span>
-			</li>
-		<% } %>
-	</ul>
+	<div id="friends" class="friends">
+		<input class="search" placeholder="Search <%= model.category %>" />
+		<ul class="list friend-list">
+			<% for(var i=0; i<model.friends.length; i++) { %>
+				<li class="friend">
+					<a href="/<%= model.category %>/user/<%= model.friends[i].user_name %>"><%= model.friends[i].full_name %></a>
+					<span class="user-name-data"><%= model.friends[i].full_name %></span>
+				</li>
+			<% } %>
+		</ul>
+	</div>
 </div>
