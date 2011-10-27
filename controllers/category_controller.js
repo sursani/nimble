@@ -20,9 +20,16 @@ module.exports = {
 								friends: friends,
 								category: cat
 							};
+							
+							var title = '';
+							if (cat === 'celebrity') {
+								title = 'Celebrity';
+							} else if (cat === 'nba') {
+								title = 'NBA';
+							}
 						
 							res.render('category/index', {
-								title: 'Celebrity Tweets',
+								title: title + ' Tweets',
 								model: viewModel
 							});
 						} else {

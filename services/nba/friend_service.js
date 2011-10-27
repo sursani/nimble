@@ -1,10 +1,10 @@
 var sys = require('sys');
 var twitter = require('twitter');
-var FriendProvider = require('../providers/friend_provider').FriendProvider;
-var friendProvider = new FriendProvider('celebrity');
-var access_token = "386324335-xUNH0SVvmaz87RQ246VPUaNTls2wftrYPH4T425Y";
-var access_token_secret= "kuA0Ub5GXnVT8cOWe8Rn9OcUHhSBaHqVOZ2fbDg0CHo";
-var screen_name = "CarTweetin";
+var FriendProvider = require('../../providers/friend_provider').FriendProvider;
+var friendProvider = new FriendProvider('nba');
+var access_token = "399110344-H3TlQlfTKQwBZo7yfilrrTUIRZ0turcg3BQJTsjg";
+var access_token_secret= "KFi3M2DVQxfYVU0Mk7HXKNtdjm6v6QClpwtftW6rY";
+var screen_name = "NBATweetin";
 
 
 //the code below just adds friends to the database
