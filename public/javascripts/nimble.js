@@ -110,6 +110,7 @@ socket.on('connect', function() {
 
 socket.on('newtweets', function (new_tweets) {
 	var tweets = [];
+	debugger;
 	
 	if (nimbleGlobal.category && nimbleGlobal.user_name) {
 		for (var i=0; i<new_tweets.length; i++) {

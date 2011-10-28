@@ -14,6 +14,7 @@ module.exports = {
 			tweetProvider.getPagedTweets(null, category, function(err, docs, cat) {
 				if (!err) {
 					friendProvider.find(function(err, friends) {
+						console.log(cat);
 						if (!err) {
 							var viewModel = {
 								tweets: docs,
