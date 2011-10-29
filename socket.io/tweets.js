@@ -32,7 +32,7 @@ Downloader.prototype.download = function() {
     var self = this;
 
     setInterval(function() {
-		celebrityTweetProvider.findByLastDate(celebLastDate, function(err, tweets) {
+		celebrityTweetProvider.findByLastDate(celebLastDate, function (err, tweets) {
 			if (tweets.length > 0) {
 				var lastIndex = tweets.length - 1;
 				celebLastDate = new Date(tweets[lastIndex].created_on);
@@ -56,7 +56,7 @@ Downloader.prototype.download = function() {
     }, 10000);
 
 	setInterval(function() {
-		nbaTweetProvider.findByLastDate(nbaLastDate, function(err, tweets) {
+		nbaTweetProvider.findByLastDate(nbaLastDate, function (err, tweets) {
 			if (tweets.length > 0) {
 				var lastIndex = tweets.length - 1;
 				nbaLastDate = new Date(tweets[lastIndex].created_on);
