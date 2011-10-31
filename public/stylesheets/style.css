@@ -1,8 +1,13 @@
+html {
+	 height: 100% 
+}
+
 body {
   margin: 0;
   padding: 0;
   background: #f8f8f8;
   font: 14px "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+  height: 100%; 
 }
 
 a {
@@ -81,6 +86,7 @@ div.loading {
 .twitterstream {
 	float: left;
 	width: 600px;
+	
 }
 
 .twitterstream-mini {
@@ -101,8 +107,21 @@ input.search {
 	margin-left: 38px;
 }
 
-.tweet-stream {
-	height: 82px;	
+.tweet-stream {	
+	text-align: left;
+	vertical-align: bottom;
+	overflow:auto;
+	border-bottom: 1px solid #000000;
+}
+
+.tweet-item {	
+	position: relative;
+	overflow:auto;
+	border:0px solid #000000;
+	padding: 6px;
+	padding-top: 10px;
+	height: auto !important;
+	min-height: 60px;
 }
 
 .tweet-stream-mini {
@@ -113,6 +132,7 @@ input.search {
 	float: left;
 	height: 50px;
 	width: 50px;
+	vertical-align: middle;
 }
 
 .tweet-info {
@@ -131,7 +151,10 @@ input.search {
 
 .tweet-list {
 	list-style-type: none;
+	padding: 0;
+	margin-left: 20px;
 }
+
 
 .friend-list {
 	list-style-type: none;
@@ -149,36 +172,60 @@ div#layout {
 }
 
 div#header {
- width: 100%;
- height: 89px;
- background: url("/images/header.png") 
+	width: 100%;
+	height: 89px;
+	background: url("/images/header.png") 
 }
 
-div#logo {
- margin-left: 30px;
- width: 253px;
- height: 80px;
- background: url("/images/nimble_logo.png") 
+#logo {
+	margin-left: 30px;
+	width: 253px;
+	height: 80px;
+	/* background: url("/images/nimble_logo.png") */
 }
 
 div#footer {
- position:absolute;
- bottom:0;
- width: 100%;
- height: 50px;
- background: url("/images/footer_bg.gif");
- clear: both;
+ 	position:absolute;
+	bottom:0;
+	width: 100%;
+	height: 50px;
+	background: url("/images/footer_bg.gif");
+	clear: both;
+	color: #00B7FF;
+}
+
+div#copy {
+	padding-left: 10px;
+	padding-top: 15px;
 }
 
 div.wrapper {
-min-height: 100%;
-height: auto;
-height: 100%;
-margin: 0 auto -4em;
-padding-bottom:50px; 
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -4em;
+	padding-bottom:50px; 
+}
+
+div#categories {
+	position: relative;
+	text-align: right;
+	top: -70px;
+	color:  #71cee6;
+	font-size: 13px;
+	font-weight: bold;
+	padding-right: 10px;
+}
+
+div#categories select {
+	width: 150px;
 }
 
 .push {
 	height: 50px;	
 	clear: both;
+}
+
+.alternate {
+	background-color: #AEBDCC;
 }

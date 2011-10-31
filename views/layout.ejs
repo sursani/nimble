@@ -9,7 +9,14 @@
   <div id="layout">
   
    <div id="header">
-	  <div id="logo"></div>
+   	  <a href="/"><img id="logo" src="/images/nimble_logo.png" /></a>
+   	  <div id="categories">
+   	  	Category: 
+   	  	<select>
+   	  		<option value="Celebrity">Celebrity</option>
+   	  		<option value="NBA" >NBA</option>
+   	  	</select>
+   	  </div>
 	</div>
 
 	<div class="wrapper">
@@ -18,7 +25,7 @@
 	</div>
 
 	<div id="footer">
-		Nimble © <%= new Date().getUTCFullYear() %>
+		<div id="copy">Nimble © <%= new Date().getUTCFullYear() %></div>
 	</div>
   
   </div>

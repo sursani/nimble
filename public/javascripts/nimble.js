@@ -13,7 +13,7 @@ var showOldTweets = function (tweets) {
 };
 
 var formatTweetList = function (data) {
-	return '<li class="tweet-stream"><div class="profile-image"><img src="' + data.profile_image_url + '"/></div><div class="tweet-info"><div class="user">' + data.full_name + ' <span class="username">' + data.user_name + '</span>' + '</div><div class="text">' + data.text + '</div><div class="date"><abbr class="timeago" title="' + ISODateString(new Date(data.created_on)) + '"></abbr></div><input type="hidden" class="pagingDate" value="' + data.created_on + '"/></div></li>';
+	return '<li class="tweet-stream"><div class="tweet-item"><div class="profile-image"><img src="' + data.profile_image_url + '"/></div><div class="tweet-info"><div class="user">' + data.full_name + ' <span class="username">' + data.user_name + '</span>' + '</div><div class="text">' + data.text + '</div><div class="date"><abbr class="timeago" title="' + ISODateString(new Date(data.created_on)) + '"></abbr></div><input type="hidden" class="pagingDate" value="' + data.created_on + '"/></div></div></li>';
 };
 
 var ISODateString = function (d) {
@@ -58,8 +58,11 @@ $('#showMore').click(function(e) {
 		hideLoading();
 		if (data && data.length > 0) {
 			showOldTweets(data);
+			$('.tweet-list li:nth-child(odd)').addClass('alternate');
 		}
 	});
+	
+	
 });
 
 // DOM ready
@@ -77,6 +80,8 @@ $(function () {
 		var text = replaceURLWithHTMLLinks($(this).text());
 		$(this).html(text);
 	});
+	
+	$('.tweet-list li:nth-child(odd)').addClass('alternate');
 	
 	$('span.username').livequery(function () {
 		var user_name = $(this).text();
