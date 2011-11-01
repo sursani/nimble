@@ -6,20 +6,23 @@ body {
   margin: 0;
   padding: 0;
   background: #f8f8f8;
-  font: 14px "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+  font: 14px Helvetica, Arial, sans-serif;
   height: 100%; 
 }
 
 h1{
-	color: #252831;
+	color: #651800;
 	font-family: helvetica, arial;
-	font-size: 2em;
+	font-size: 1.5em;
+	text-align: left;
+	font-style:italic;
 	text-align: left;
 }
 
 a {
   color: #00B7FF;
   text-decoration: none;
+  font-weight: bold;
 }
 
 a.category-name {
@@ -50,9 +53,8 @@ div.loading {
 }
 
 .user {
-	font-size: 12px;
+	font-size: 13px;
 	font-weight: bold;
-	font-family: Arial;
 }
 
 .user-mini {
@@ -70,7 +72,7 @@ div.loading {
 }
 
 .date {
-	font-size: 10px;
+	font-size: 11px;
 	color: #959595;
 	padding-top: 5px;
 }
@@ -82,7 +84,7 @@ div.loading {
 }
 
 .container {
-	width: 800px;
+	width: 820px;
 	margin: 0 auto;
 }
 
@@ -111,7 +113,8 @@ div.loading {
 }
 
 input.search {
-	margin-left: 38px;
+	margin-left: 5px;
+	margin-top: 10px;
 }
 
 .tweet-stream {	
@@ -126,7 +129,7 @@ input.search {
 .tweet-item {	
 	position: relative;
 	overflow:auto;
-	padding: 10px;
+	padding: 5px;
 	height: auto !important;
 	min-height: 60px;
 }
@@ -158,8 +161,8 @@ input.search {
 
 .tweet-list {
 	list-style-type: none;
-	padding-right: 5px;
-	padding-left: 5px;
+	padding-right: 2px;
+	padding-left: 2px;
 	padding-top: 2px;
 	padding-bottom: 2px;
 	margin: 0px;
@@ -174,6 +177,18 @@ input.search {
 .friend-list {
 	list-style-type: none;
 	font-size: 12px;
+	margin: 0;
+	padding: 5px;
+}
+
+.friend-list a {
+	color: #651800;
+	font-size: 13px;
+	font-family: Helvetica, Arial;
+}
+
+.friend-list a:hover{ 
+	color: #00B7FF;
 }
 
 .footer {
@@ -252,11 +267,11 @@ div#categories select {
 
 .alternate-even {
 	border: 1px solid #82C3E6;
-	background-color: #f8f8f8;
+	background-color: #F1EFE3;
 	border-bottom-right-radius:4px 4px;
 	border-bottom-left-radius:4px 4px;
 	border-top-left-radius:4px 4px;
 	border-top-right-radius:4px 4px;
 }
 
-li.tweet-stream {margin: .5em 0}
+li.tweet-stream {margin: .3em}

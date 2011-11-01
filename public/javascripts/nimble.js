@@ -101,6 +101,14 @@ $(function () {
 		direction: 'up'
 	});
 	
+	$("#optcategories").change(function(){
+		var category = $("#optcategories").val();
+		
+		var url = window.location.href;
+		var arr = url.split("/");
+		window.location.href =  arr[0] + "//" + arr[2] + "/" + category;
+	});
+	
 	// enable search
 	var templates = {
 		    valueNames: [ 'user-name-data']
