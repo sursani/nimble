@@ -10,6 +10,13 @@ body {
   height: 100%; 
 }
 
+h1{
+	color: #252831;
+	font-family: helvetica, arial;
+	font-size: 2em;
+	text-align: left;
+}
+
 a {
   color: #00B7FF;
   text-decoration: none;
@@ -111,15 +118,15 @@ input.search {
 	text-align: left;
 	vertical-align: bottom;
 	overflow:auto;
-	border-bottom: 1px solid #000000;
+	padding: 2px;
+	border: 1px;
+	border-color: #000000;
 }
 
 .tweet-item {	
 	position: relative;
 	overflow:auto;
-	border:0px solid #000000;
-	padding: 6px;
-	padding-top: 10px;
+	padding: 10px;
 	height: auto !important;
 	min-height: 60px;
 }
@@ -151,8 +158,16 @@ input.search {
 
 .tweet-list {
 	list-style-type: none;
-	padding: 0;
-	margin-left: 20px;
+	padding-right: 5px;
+	padding-left: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin: 0px;
+	background-color: #252831;
+	border-bottom-right-radius:4px 4px;
+	border-bottom-left-radius:4px 4px;
+	border-top-left-radius:4px 4px;
+	border-top-right-radius:4px 4px;
 }
 
 
@@ -227,5 +242,21 @@ div#categories select {
 }
 
 .alternate {
-	background-color: #AEBDCC;
+	background-color: #DEEEF7;
+	border: 1px solid #82C3E6;
+	border-bottom-right-radius:4px 4px;
+	border-bottom-left-radius:4px 4px;
+	border-top-left-radius:4px 4px;
+	border-top-right-radius:4px 4px;
 }
+
+.alternate-even {
+	border: 1px solid #82C3E6;
+	background-color: #f8f8f8;
+	border-bottom-right-radius:4px 4px;
+	border-bottom-left-radius:4px 4px;
+	border-top-left-radius:4px 4px;
+	border-top-right-radius:4px 4px;
+}
+
+li.tweet-stream {margin: .5em 0}
