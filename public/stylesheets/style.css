@@ -166,7 +166,7 @@ input.search {
 	padding-top: 2px;
 	padding-bottom: 2px;
 	margin: 0px;
-	background-color: #252831;
+	/*background-color: #252831;*/
 	border-bottom-right-radius:4px 4px;
 	border-bottom-left-radius:4px 4px;
 	border-top-left-radius:4px 4px;
@@ -257,7 +257,7 @@ div#categories select {
 }
 
 .alternate {
-	background-color: #DEEEF7;
+	/*background-color: #DEEEF7;*/
 	border: 1px solid #82C3E6;
 	border-bottom-right-radius:4px 4px;
 	border-bottom-left-radius:4px 4px;
@@ -267,7 +267,7 @@ div#categories select {
 
 .alternate-even {
 	border: 1px solid #82C3E6;
-	background-color: #F1EFE3;
+	/*background-color: #F1EFE3;*/
 	border-bottom-right-radius:4px 4px;
 	border-bottom-left-radius:4px 4px;
 	border-top-left-radius:4px 4px;

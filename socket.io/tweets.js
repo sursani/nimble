@@ -31,8 +31,9 @@ nbaTweetProvider.findLastTweet(function(err, docs) {
 Downloader.prototype.download = function() {
     var self = this;
 
-    setInterval(function() {
+	setInterval(function() {
 		celebrityTweetProvider.findByLastDate(celebLastDate, function (err, tweets) {
+			console.log('celebrity tweets = ' + sys.inspect(tweets));
 			if (tweets.length > 0) {
 				var lastIndex = tweets.length - 1;
 				celebLastDate = new Date(tweets[lastIndex].created_on);
@@ -49,14 +50,13 @@ Downloader.prototype.download = function() {
 					};
 					new_tweets.push(tweet);
 				}
-				
-				self.emit('finished', new_tweets);
+				console.log('celebrity new_tweets = ' + sys.inspect(new_tweets));
+				self.emit('finished_celebrity', new_tweets);
 			}
 		});
-    }, 10000);
-
-	setInterval(function() {
+		
 		nbaTweetProvider.findByLastDate(nbaLastDate, function (err, tweets) {
+			console.log('nba tweets = ' + sys.inspect(tweets));
 			if (tweets.length > 0) {
 				var lastIndex = tweets.length - 1;
 				nbaLastDate = new Date(tweets[lastIndex].created_on);
@@ -73,8 +73,8 @@ Downloader.prototype.download = function() {
 					};
 					new_tweets.push(tweet);
 				}
-				
-				self.emit('finished', new_tweets);
+				console.log('nba new_tweets = ' + sys.inspect(new_tweets));
+				self.emit('finished_nba', new_tweets);
 			}
 		});
     }, 10000);
