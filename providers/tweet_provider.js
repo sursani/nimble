@@ -15,16 +15,15 @@ var TweetSchema = new Schema({
   , full_name				: String
   , created_on				: Date
   , tweet_id				: { type: Number, index: { unique: true }  }
+  , category				: String
 });
 
-TweetSchema.index({ created_on: -1, user_name_lower: 1 });
+TweetSchema.index({ category: 1, created_on: -1, user_name_lower: 1 });
 
-var Tweet = null;
+mongoose.model('Tweet', TweetSchema);
+Tweet = mongoose.model('Tweet');
 
-TweetProvider = function (category) {
-	mongoose.model(category + '.Tweet', TweetSchema);
-	Tweet = mongoose.model(category + '.Tweet');
-};
+TweetProvider = function() {};
 
 // Find Tweet by Id
 TweetProvider.prototype.findById = function (id, callback) {
@@ -37,34 +36,49 @@ TweetProvider.prototype.findById = function (id, callback) {
 
 // Find Tweet by Date
 TweetProvider.prototype.findByLastDate = function (lastDate, callback) {
-	Tweet.where('created_on').gt(lastDate).run(callback);
+	Tweet
+		.where('created_on').gt(lastDate)
+		.run(callback);
 };
 
 // Find last Tweet
 TweetProvider.prototype.findLastTweet = function (callback) {
-	Tweet.find().sort('created_on', 'descending').limit(1).run(callback);
+	Tweet
+		.find()
+		.sort('created_on', 'descending')
+		.limit(1)
+		.run(callback);
 };
 
 // Get Paged Tweets
-TweetProvider.prototype.getPagedTweets = function(lastDate, category, callback) {
+TweetProvider.prototype.getPagedTweets = function (lastDate, category, callback) {
 	if (lastDate) {
 		var date = new Date(lastDate);
-		Tweet.find().where('created_on').lt(lastDate).sort('created_on', 'descending').limit(per_page).run(function (err, docs) {
-			callback(err, docs, category);
-		});
+		Tweet
+			.where('created_on').lt(lastDate)
+			.where('category', category)
+			.sort('created_on', 'descending')
+			.limit(per_page)
+			.run(function (err, docs) {
+				callback(err, docs, category);
+			});
 	} else {
-		Tweet.find().sort('created_on', 'descending').limit(per_page).run(function (err, docs) {
-			callback(err, docs, category);
-		});
+		Tweet
+			.where('category', category)
+			.sort('created_on', 'descending')
+			.limit(per_page)
+			.run(function (err, docs) {
+				callback(err, docs, category);
+			});
 	}
 };
 
 // Get Paged Tweets by User
-TweetProvider.prototype.getPagedTweetsByUser = function(lastDate, user_name, callback) {
+TweetProvider.prototype.getPagedTweetsByUser = function (lastDate, category, user_name, callback) {
 	if (lastDate) {
 		var date = new Date(lastDate);
 		Tweet
-			.find()
+			.where('category', category)
 			.where('user_name_lower', user_name.toLowerCase())
 			.where('created_on').lt(date)
 			.sort('created_on', 'descending')
@@ -72,7 +86,7 @@ TweetProvider.prototype.getPagedTweetsByUser = function(lastDate, user_name, cal
 			.run(callback);
 	} else {
 		Tweet
-			.find()
+			.where('category', category)
 			.where('user_name_lower', user_name.toLowerCase())
 			.sort('created_on', 'descending')
 			.limit(per_page)
@@ -81,7 +95,7 @@ TweetProvider.prototype.getPagedTweetsByUser = function(lastDate, user_name, cal
 };
 
 // Create a new Tweet
-TweetProvider.prototype.save = function (params, callback) {
+TweetProvider.prototype.save = function (category, params, callback) {
 	Tweet.find({ tweet_id: params['tweet_id'] }, function (err, docs) {
 		if (docs.length < 1) {
 			var tweet = new Tweet({
@@ -91,7 +105,8 @@ TweetProvider.prototype.save = function (params, callback) {
 					profile_image_url: params['profile_image_url'],
 					full_name: params['full_name'],
 					created_on: params['created_on'],
-					tweet_id: params['tweet_id']
+					tweet_id: params['tweet_id'],
+					category: category
 			});
   			tweet.save(function (err) {
 				callback();

@@ -2,6 +2,7 @@ var sys = require('sys');
 var nimble = require('nimble');
 
 var TweetProvider = require('../providers/tweet_provider').TweetProvider;
+var tweetProvider = new TweetProvider();
 
 module.exports = {
 	
@@ -10,13 +11,13 @@ module.exports = {
 		var tweetsByCategory = [];
 		
 		for (var i=0; i<categories.length; i++) {
-			var tweetProvider = new TweetProvider(categories[i]);
-			tweetProvider.getPagedTweets(null, categories[i], function (err, docs, category) {
-				var m = {
-					tweets: docs,
+			tweetProvider.getPagedTweets(null, categories[i], function (err, tweets, category) {
+				var model = {
+					tweets: tweets,
 					category: category
 				};
-				tweetsByCategory.push(m);
+				
+				tweetsByCategory.push(model);
 				finalCallback();
 			});
 		}

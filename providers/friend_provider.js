@@ -8,24 +8,28 @@ var FriendSchema = new Schema({
     user_name     			: String
   , friend_id    			: { type: Number, index: { unique: true }  }
   , full_name				: String
-  , full_name_lower			: { type: String, index: true }
+  , full_name_lower			: String
   , description				: String
+  , category				: String
 });
 
-var Friend = null;
+FriendSchema.index({ category: 1, full_name_lower: 1 });
 
-FriendProvider = function (category) {
-	mongoose.model(category + '.Friend', FriendSchema);
-	Friend = mongoose.model(category + '.Friend');
-};
+mongoose.model('Friend', FriendSchema);
+Friend = mongoose.model('Friend');
+
+FriendProvider = function() {};
 
 // Find all Friends
-FriendProvider.prototype.find = function (callback) {
-  Friend.find().sort('full_name_lower', 'ascending').run(callback);
+FriendProvider.prototype.find = function (category, callback) {
+  Friend
+		.where('category', category)
+		.sort('full_name_lower', 'ascending')
+		.run(callback);
 };
 
 // Create a new Friend
-FriendProvider.prototype.save = function (params, callback) {
+FriendProvider.prototype.save = function (category, params, callback) {
 	Friend.find({ friend_id: params['friend_ID'] }, function (err, docs) {
 		if (docs.length < 1) {
 			var friend = new Friend({
@@ -33,7 +37,8 @@ FriendProvider.prototype.save = function (params, callback) {
 				friend_id: params['friend_id'],
 				full_name: params['full_name'],
 				full_name_lower: params['full_name'].toLowerCase(),
-				description: params['description']
+				description: params['description'],
+				category: category
 			});
 			console.log('saving user ' + friend.friend_id);
 			friend.save(function (err) {
