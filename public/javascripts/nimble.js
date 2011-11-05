@@ -104,9 +104,11 @@ $(function () {
 	$("#optcategories").change(function(){
 		var category = $("#optcategories").val();
 		
-		var url = window.location.href;
-		var arr = url.split("/");
-		window.location.href =  arr[0] + "//" + arr[2] + "/" + category;
+		if (category !== '') {
+			var url = window.location.href;
+			var arr = url.split("/");
+			window.location.href =  arr[0] + "//" + arr[2] + "/" + category;
+		}
 	});
 	
 	// enable search
