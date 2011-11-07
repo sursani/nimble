@@ -6,13 +6,13 @@ var TweetProvider = require('../../providers/tweet_provider').TweetProvider;
 var friendProvider = new FriendProvider();
 var tweetProvider = new TweetProvider();
 
-var access_token = "386324335-xUNH0SVvmaz87RQ246VPUaNTls2wftrYPH4T425Y";
-var access_token_secret= "kuA0Ub5GXnVT8cOWe8Rn9OcUHhSBaHqVOZ2fbDg0CHo";
-var screen_name = "CarTweetin";
+var access_token = "399110344-H3TlQlfTKQwBZo7yfilrrTUIRZ0turcg3BQJTsjg";
+var access_token_secret= "KFi3M2DVQxfYVU0Mk7HXKNtdjm6v6QClpwtftW6rY";
+var screen_name = "NBATweetin";
 
 //the code below just adds friends to the database
 //before adding we need to verify if a friend exist then update
-var category = 'celebrity';
+var category = 'nba';
 
 friendProvider.find(category, function(err, data){
 	if (!err) {

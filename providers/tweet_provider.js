@@ -96,8 +96,8 @@ TweetProvider.prototype.getPagedTweetsByUser = function (lastDate, category, use
 
 // Create a new Tweet
 TweetProvider.prototype.save = function (category, params, callback) {
-	Tweet.find({ tweet_id: params['tweet_id'] }, function (err, docs) {
-		if (docs.length < 1) {
+	Tweet.find({ tweet_id: params['tweet_id'] }, function (err, tweets) {
+		if (tweets.length < 1) {
 			var tweet = new Tweet({
 					user_name: params['user_name'],
 					user_name_lower: params['user_name'].toLowerCase(),
