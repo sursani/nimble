@@ -111,12 +111,14 @@ $(function () {
 		}
 	});
 	
-	// enable search
-	var templates = {
-		    valueNames: [ 'user-name-data']
-	};
+	if (nimbleGlobal.category) {
+		// enable search
+		var templates = {
+		    valueNames: ['user-name-data']
+		};
 
-	var featureList = new List('friends', templates);
+		var featureList = new List('friends', templates);
+	}
 });
 
 // Socket IO

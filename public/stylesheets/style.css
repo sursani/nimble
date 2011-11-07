@@ -6,8 +6,6 @@ html {
 body {
   margin: 0;
   padding: 0;
-  /* background: #f8f8f8; */
- background: url("/images/celebrity.jpg") no-repeat center center fixed;
   font: 14px Helvetica, Arial, sans-serif;
   height: 100%; 
 }

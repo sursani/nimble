@@ -5,6 +5,19 @@
 	};
 </script>
 
+<style>
+	body {
+		<% if (model.category === 'celebrity') { %>
+			background: url("/images/celebrity.jpg") repeat;
+		<% } else if (model.category === 'nba') { %>
+			background: url("/images/nba.jpg") repeat;
+		<% } else if (model.category === 'nfl') { %>
+			background: url("/images/nfl.jpg") repeat;
+		<% } %>
+	}
+</style>
+
+
 <div class="container">
 	<div class="twitterstream">
 		<h3><a href="/<%= model.category %>"><-- back to <%= model.category %></a></h3>
