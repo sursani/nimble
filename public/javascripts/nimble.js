@@ -58,8 +58,6 @@ $('#showMore').click(function(e) {
 		hideLoading();
 		if (data && data.length > 0) {
 			showOldTweets(data);
-				$('.tweet-list li:nth-child(odd)').addClass('alternate');
-				$('.tweet-list li:nth-child(even)').addClass('alternate-even');
 		}
 	});
 	
@@ -81,10 +79,6 @@ $(function () {
 		var text = replaceURLWithHTMLLinks($(this).text());
 		$(this).html(text);
 	});
-	
-	$('.tweet-list li:nth-child(odd)').addClass('alternate');
-	$('.tweet-list li:nth-child(even)').addClass('alternate-even');
-	
 	
 	$('span.username').livequery(function () {
 		var user_name = $(this).text();

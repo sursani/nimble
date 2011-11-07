@@ -24,6 +24,8 @@ module.exports = {
 								title = 'Celebrity';
 							} else if (cat === 'nba') {
 								title = 'NBA';
+							} else if (cat === 'nfl') {
+								title = 'NFL';
 							}
 						
 							res.render('category/index', {

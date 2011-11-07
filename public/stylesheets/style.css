@@ -248,27 +248,15 @@ div#categories select {
 	clear: both;
 }
 
-.alternate {
-	/*background-color: #DEEEF7;*/
-	background-color: #f8f8f8;
+li.tweet-stream {
+	margin: .3em;
 	border: 1px solid #2daebf;
-	border-bottom-right-radius:4px 4px;
-	border-bottom-left-radius:4px 4px;
-	border-top-left-radius:4px 4px;
-	border-top-right-radius:4px 4px;
-}
-
-.alternate-even {
-	border: 1px solid #2daebf;
-	/* background-color: #F1EFE3; */
 	background-color: #f8f8f8;
 	border-bottom-right-radius:4px 4px;
 	border-bottom-left-radius:4px 4px;
 	border-top-left-radius:4px 4px;
 	border-top-right-radius:4px 4px;
 }
-
-li.tweet-stream {margin: .3em}
 
 
 .awesome {
