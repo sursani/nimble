@@ -1,19 +1,21 @@
 html {
 	 height: 100% 
+	 
 }
 
 body {
   margin: 0;
   padding: 0;
-  background: #f8f8f8;
+  /* background: #f8f8f8; */
+ background: url("/images/celebrity.jpg") no-repeat center center fixed;
   font: 14px Helvetica, Arial, sans-serif;
   height: 100%; 
 }
 
 h1{
-	color: #651800;
+	color: #252831;
 	font-family: helvetica, arial;
-	font-size: 1.5em;
+	font-size: 2em;
 	text-align: left;
 	font-style:italic;
 	text-align: left;
@@ -29,16 +31,8 @@ a.category-name {
 	font-size: 30px;
 }
 
-a#showMore {
-	padding-left: 38px;
-}
 
-div.pagination {
-	background: none repeat scroll 0 0 #E9E9E9;
-	margin-bottom: 20px;
-	padding: 5px 0;
-	text-align: center;
-}
+
 
 div.loading {
 	display: none;
@@ -182,13 +176,13 @@ input.search {
 }
 
 .friend-list a {
-	color: #651800;
+	color: #252831;
 	font-size: 13px;
 	font-family: Helvetica, Arial;
 }
 
 .friend-list a:hover{ 
-	color: #00B7FF;
+	color: #651800;
 }
 
 .footer {
@@ -258,7 +252,8 @@ div#categories select {
 
 .alternate {
 	/*background-color: #DEEEF7;*/
-	border: 1px solid #82C3E6;
+	background-color: #f8f8f8;
+	border: 1px solid #2daebf;
 	border-bottom-right-radius:4px 4px;
 	border-bottom-left-radius:4px 4px;
 	border-top-left-radius:4px 4px;
@@ -266,8 +261,9 @@ div#categories select {
 }
 
 .alternate-even {
-	border: 1px solid #82C3E6;
-	/*background-color: #F1EFE3;*/
+	border: 1px solid #2daebf;
+	/* background-color: #F1EFE3; */
+	background-color: #f8f8f8;
 	border-bottom-right-radius:4px 4px;
 	border-bottom-left-radius:4px 4px;
 	border-top-left-radius:4px 4px;
@@ -275,3 +271,58 @@ div#categories select {
 }
 
 li.tweet-stream {margin: .3em}
+
+
+.awesome {
+-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+border-bottom: 1px solid rgba(0,0,0,0.25);
+}
+/* Sizes ---------- */
+.small.awesome {
+font-size: 11px;
+}
+.medium.awesome {
+font-size: 13px;
+}
+.large.awesome {
+font-size: 14px;
+padding: 8px 14px 9px;
+}
+ 
+/* Colors ---------- */
+.blue.awesome {
+background-color: #2daebf;
+}
+.red.awesome {
+background-color: #e33100;
+}
+.magenta.awesome {
+background-color: #a9014b;
+}
+.orange.awesome {
+background-color: #ff5c00;
+}
+.yellow.awesome {
+background-color: #ffb515;
+}
+
+div.pagination {
+	background: none repeat scroll 0 0 #2daebf;
+	margin-bottom: 20px;
+	padding: 5px 0;
+	margin-left: 10px;
+	text-align: center;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	border-bottom: 1px solid rgba(0,0,0,0.25);
+	width: 580px;
+
+}
+
+a#showMore {
+	color: #fff;
+	padding-left: 38px;
+}
