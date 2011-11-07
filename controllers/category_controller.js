@@ -1,5 +1,4 @@
 var sys = require('sys');
-var nimble = require('nimble');
 
 var TweetProvider = require('../providers/tweet_provider').TweetProvider;
 var FriendProvider = require('../providers/friend_provider').FriendProvider;
@@ -9,13 +8,10 @@ var friendProvider = new FriendProvider();
 module.exports = {
 
 	index: function (req, res, next) {
-		var category = req.params.category.toLowerCase();
-		if (nimble.isValidCategory(category)) {
-			tweetProvider.getPagedTweets(null, category, function (err, tweets, cat) {
+		if (req.category) {
+			tweetProvider.getPagedTweets(null, req.category, function (err, tweets, cat) {
 				if (!err) {
-					friendProvider.find(category, function (err, friends) {
-						console.log('err here: ' + err);
-						console.log('friends here: ' + sys.inspect(friends));
+					friendProvider.find(req.category, function (err, friends) {
 						if (!err) {
 							var viewModel = {
 								tweets: tweets,
@@ -48,11 +44,10 @@ module.exports = {
 	},
 	
 	getMoreTweets: function (req, res, next) {
-		var category = req.params.category.toLowerCase();
-		if (nimble.isValidCategory(category)) {
-			tweetProvider.getPagedTweets(req.body.last_date, category, function(err, docs) {
+		if (req.category) {
+			tweetProvider.getPagedTweets(req.body.last_date, req.category, function (err, tweets) {
 				if (!err) {
-					res.json(docs);
+					res.json(tweets);
 				} else {
 					next();
 				}

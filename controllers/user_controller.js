@@ -1,5 +1,4 @@
 var sys = require('sys');
-var nimble = require('nimble');
 
 var TweetProvider = require('../providers/tweet_provider').TweetProvider;
 var FriendProvider = require('../providers/friend_provider').FriendProvider;
@@ -7,18 +6,18 @@ var tweetProvider = new TweetProvider();
 var friendProvider = new FriendProvider();
 
 module.exports = {
+	
 	displayUserTweets: function (req, res, next) {
-		var category = req.params.category.toLowerCase();
-		if (nimble.isValidCategory(category)) {
-			tweetProvider.getPagedTweetsByUser(null, category, req.params.user_name, function (err, tweets) {
+		if (req.category) {
+			tweetProvider.getPagedTweetsByUser(null, req.category, req.params.user_name, function (err, tweets) {
 				if (!err && tweets.length > 0) {
-					friendProvider.find(category, function (err, friends) {
+					friendProvider.find(req.category, function (err, friends) {
 						if (!err) {
 							var viewModel = {
 								user_name: req.params.user_name,
 								tweets: tweets,
 								friends: friends,
-								category: category
+								category: req.category
 							};
 				
 							var userInfo = {};
@@ -43,9 +42,8 @@ module.exports = {
 	},
 	
 	getMoreTweetsByUser: function (req, res, next) {
-		var category = req.params.category.toLowerCase();
-		if (nimble.isValidCategory(category)) {
-			tweetProvider.getPagedTweetsByUser(req.body.last_date, category, req.body.user_name, function (err, tweets) {
+		if (req.category) {
+			tweetProvider.getPagedTweetsByUser(req.body.last_date, req.category, req.body.user_name, function (err, tweets) {
 				if (!err) {
 					res.json(tweets);
 				} else {
