@@ -2,10 +2,10 @@ var sys = require('sys');
 var twitter = require('twitter');
 var FriendProvider = require('../../providers/friend_provider').FriendProvider;
 var friendProvider = new FriendProvider();
-var access_token = "386324335-xUNH0SVvmaz87RQ246VPUaNTls2wftrYPH4T425Y";
-var access_token_secret= "kuA0Ub5GXnVT8cOWe8Rn9OcUHhSBaHqVOZ2fbDg0CHo";
-var screen_name = "CarTweetin";
-var category = 'celebrity';
+var access_token = "405881726-PwITAhRURYAB27XimgzTUg5tJmjaGZSscCoRXxSs";
+var access_token_secret= "OA8IuLk5fXRwbxoKgmeT9EJvIiGBKk1d14agSFry1Iw";
+var screen_name = "NFLTweetin";
+var category = 'nfl';
 
 //the code below just adds friends to the database
 //before adding we need to verify if a friend exist then update
@@ -15,7 +15,7 @@ var batchIds = [];
 
 console.log(screen_name);
 twitter.getFriendsIds(access_token, access_token_secret, screen_name, function (err, data) {
-	if (!err) {
+	if (!err){
 		for (var i=1; i<=data.ids.length; i++) {
 			if ((i % 100) == 0){
 				batchIds.push(ids.join(','));

@@ -5,7 +5,7 @@ var friendProvider = new FriendProvider();
 var access_token = "399110344-H3TlQlfTKQwBZo7yfilrrTUIRZ0turcg3BQJTsjg";
 var access_token_secret= "KFi3M2DVQxfYVU0Mk7HXKNtdjm6v6QClpwtftW6rY";
 var screen_name = "NBATweetin";
-
+var category = 'nba';
 
 //the code below just adds friends to the database
 //before adding we need to verify if a friend exist then update
@@ -42,7 +42,7 @@ twitter.getFriendsIds(access_token, access_token_secret, screen_name, function (
 							description: users[j].description
 						};
 						
-						friendProvider.save('nba', friend, function() {
+						friendProvider.save(category, friend, function() {
 							console.log('saving ' + friend.full_name + ' to database');
 						});
 						

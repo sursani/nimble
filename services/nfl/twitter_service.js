@@ -4,12 +4,12 @@ var twitter = require('twitter');
 var TweetProvider = require('../../providers/tweet_provider').TweetProvider;
 
 var tweetProvider = new TweetProvider();
-var nbaAccessToken = "399110344-H3TlQlfTKQwBZo7yfilrrTUIRZ0turcg3BQJTsjg";
-var nbaAccessTokenSecret= "KFi3M2DVQxfYVU0Mk7HXKNtdjm6v6QClpwtftW6rY";
+var nflAccessToken = "405881726-PwITAhRURYAB27XimgzTUg5tJmjaGZSscCoRXxSs";
+var nflAccessTokenSecret= "OA8IuLk5fXRwbxoKgmeT9EJvIiGBKk1d14agSFry1Iw";
 
 var nbaDaemonProcess = function() {
-	var category = 'nba';
-	twitter.getUserStream(category, nbaAccessToken, nbaAccessTokenSecret, function (tweet) {
+	var category = 'nfl';
+	twitter.getUserStream(category, nflAccessToken, nflAccessTokenSecret, function (tweet) {
 		tweetProvider.save(category, tweet, function() {
 			console.log("saving tweet by " + tweet.user_name);
 		});
