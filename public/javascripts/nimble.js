@@ -86,7 +86,7 @@ $(function () {
 	});
 	
 	$('.home').vTicker({
-		speed: 500,
+		speed: 1000,
 		pause: 3000,
 		showItems: 3,
 		animation: 'fade',
