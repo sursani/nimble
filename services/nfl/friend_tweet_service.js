@@ -12,7 +12,7 @@ var screen_name = "NFLTweetin";
 
 //the code below just adds friends to the database
 //before adding we need to verify if a friend exist then update
-var category = 'nba';
+var category = 'nfl';
 
 friendProvider.find(category, function(err, data){
 	if (!err) {
