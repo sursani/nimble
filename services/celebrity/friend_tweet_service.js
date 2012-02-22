@@ -6,8 +6,8 @@ var TweetProvider = require('../../providers/tweet_provider').TweetProvider;
 var friendProvider = new FriendProvider();
 var tweetProvider = new TweetProvider();
 
-var access_token = "386324335-xUNH0SVvmaz87RQ246VPUaNTls2wftrYPH4T425Y";
-var access_token_secret= "kuA0Ub5GXnVT8cOWe8Rn9OcUHhSBaHqVOZ2fbDg0CHo";
+var access_token = "";
+var access_token_secret= "";
 var screen_name = "CarTweetin";
 
 //the code below just adds friends to the database
