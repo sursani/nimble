@@ -6,8 +6,8 @@ var TweetProvider = require('../../providers/tweet_provider').TweetProvider;
 var friendProvider = new FriendProvider();
 var tweetProvider = new TweetProvider();
 
-var access_token = "405881726-PwITAhRURYAB27XimgzTUg5tJmjaGZSscCoRXxSs";
-var access_token_secret= "OA8IuLk5fXRwbxoKgmeT9EJvIiGBKk1d14agSFry1Iw";
+var access_token = "";
+var access_token_secret= "";
 var screen_name = "NFLTweetin";
 
 //the code below just adds friends to the database
