@@ -2,8 +2,8 @@ var sys = require('sys');
 var twitter = require('twitter');
 var FriendProvider = require('../../providers/friend_provider').FriendProvider;
 var friendProvider = new FriendProvider();
-var access_token = "399110344-H3TlQlfTKQwBZo7yfilrrTUIRZ0turcg3BQJTsjg";
-var access_token_secret= "KFi3M2DVQxfYVU0Mk7HXKNtdjm6v6QClpwtftW6rY";
+var access_token = "";
+var access_token_secret= "";
 var screen_name = "NBATweetin";
 var category = 'nba';
 
