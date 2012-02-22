@@ -6,8 +6,8 @@ var TweetProvider = require('../../providers/tweet_provider').TweetProvider;
 var friendProvider = new FriendProvider();
 var tweetProvider = new TweetProvider();
 
-var access_token = "399110344-H3TlQlfTKQwBZo7yfilrrTUIRZ0turcg3BQJTsjg";
-var access_token_secret= "KFi3M2DVQxfYVU0Mk7HXKNtdjm6v6QClpwtftW6rY";
+var access_token = "";
+var access_token_secret= "";
 var screen_name = "NBATweetin";
 
 //the code below just adds friends to the database
